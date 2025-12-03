@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Convite e Termo de Consentimento Livre e Esclarecido (TCLE) | FiatLux</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Capítulo do FiatLux sobre Convite e Termo de Consentimento Livre e Esclarecido (TCLE) em pesquisas com seres humanos, com foco em ética, clareza e uso de ferramentas digitais de apoio." />
+
+  <!-- Tipografias semelhantes ao ebook -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-page: #f4f5f7;
+      --bg-card: #ffffff;
+      --bg-soft: #f9fafb;
+      --text-main: #1f2933;
+      --text-soft: #52606d;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.12);
+      --border-soft: #e5e7eb;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
+      --code-bg: #111827;
+    }
+
+    body.dark-mode {
+      --bg-page: #020617;
+      --bg-card: #020617;
+      --bg-soft: #020617;
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.2);
+      --border-soft: #1f2937;
+      --shadow-soft: 0 20px 45px rgba(0, 0, 0, 0.7);
+      --code-bg: #020617;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 12px 40px 12px;
+      font-family: "Lato", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #dbeafe, #f4f5f7);
+      color: var(--text-main);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark-mode {
+      background: radial-gradient(circle at top left, #020617, #020617);
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .shell {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 24px;
+      padding: 10px;
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(16px);
+    }
+
+    body.dark-mode .shell {
+      background: rgba(15, 23, 42, 0.8);
+      box-shadow: 0 0 0 1px rgba(31, 41, 55, 0.9);
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+      padding: 26px 26px 30px 26px;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding: 40px 16px 60px 16px;
+      }
+      .card {
+        padding: 32px 36px 40px 36px;
+      }
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #dbeafe, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-family: "Oswald", system-ui, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 18px;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.45);
+    }
+
+    body.dark-mode .brand-logo {
+      background: radial-gradient(circle at 20% 20%, #0f172a, #1d4ed8);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-soft);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-soft);
+      cursor: pointer;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(148, 163, 184, 0.35);
+      transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    }
+
+    body.dark-mode .theme-toggle {
+      background: #020617;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .theme-toggle span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+    }
+
+    .theme-toggle:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.3);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 26px;
+      line-height: 1.15;
+      margin: 0 0 12px 0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 30px;
+      }
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+    }
+
+    .meta strong {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .toc {
+      margin: 16px 0 24px 0;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--bg-soft);
+      border: 1px dashed var(--border-soft);
+    }
+
+    .toc-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .toc ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .toc li {
+      margin: 3px 0;
+    }
+
+    .toc a {
+      color: var(--text-main);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(148, 163, 184, 0.9);
+    }
+
+    .toc a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    h2 {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 19px;
+      margin: 24px 0 8px 0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin: 18px 0 6px 0;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 6px 0 8px 0;
+      color: var(--text-main);
+    }
+
+    ul, ol {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-main);
+      padding-left: 20px;
+      margin: 4px 0 8px 0;
+    }
+
+    li + li {
+      margin-top: 2px;
+    }
+
+    .callout {
+      margin: 16px 0;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .callout strong {
+      color: var(--accent);
+    }
+
+    .link-inline {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(37, 99, 235, 0.6);
+    }
+
+    .link-inline:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-soft);
+      font-size: 12px;
+      color: var(--text-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <div class="card">
+        <header class="header">
+          <div class="brand">
+            <div class="brand-logo">FX</div>
+            <div class="brand-text">
+              <div class="brand-title">FiatLux, Pesquisa</div>
+              <div class="brand-subtitle">Convite e Termo de Consentimento Livre e Esclarecido</div>
+            </div>
+          </div>
+          <button id="themeToggle" class="theme-toggle" type="button">
+            <span>Modo escuro</span>
+          </button>
+        </header>
+
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span>Capítulo FiatLux</span>
+        </div>
+
+        <h1>Convite e Termo de Consentimento Livre e Esclarecido (TCLE)</h1>
+
+        <div class="meta">
+          <strong>Contexto</strong> este capítulo integra o eixo de planejamento ético da pesquisa em ciências da saúde, descrevendo o papel do Convite e do TCLE na relação entre pesquisador e participante, com foco especial em pesquisas online.
+        </div>
+
+        <!-- Sumário interno -->
+        <section class="toc">
+          <div class="toc-title">Estrutura deste capítulo</div>
+          <ul>
+            <li><a href="#definicao">1. Definição</a></li>
+            <li><a href="#importancia">2. Importância</a></li>
+            <li><a href="#quem">3. Quem deve fazer</a></li>
+            <li><a href="#quando">4. Quando fazer</a></li>
+            <li><a href="#onde">5. Onde fazer</a></li>
+            <li><a href="#como">6. Como fazer</a></li>
+            <li><a href="#consideracoes">7. Considerações finais</a></li>
+          </ul>
+        </section>
+
+        <section id="definicao">
+          <h2>1. Definição</h2>
+          <p>
+            Toda pesquisa envolvendo seres humanos exige que o participante compreenda claramente o que está sendo proposto antes de aceitar participar. Para isso, dois elementos são fundamentais, o
+            <strong>Convite</strong> e o <strong>Termo de Consentimento Livre e Esclarecido (TCLE)</strong>.
+          </p>
+          <p>
+            O Convite é o primeiro contato com o potencial participante. Ele apresenta a pesquisa de forma breve, acolhedora e compreensível. Sua função é despertar interesse, contextualizar, indicar quem está convidando e fornecer uma visão geral do estudo. O Convite faz parte da etapa de <strong>recrutamento</strong> da pesquisa, que envolve estratégias éticas para convidar pessoas a conhecer o estudo. O tema recrutamento possui requisitos e cuidados próprios, que não serão aprofundados neste capítulo.
+          </p>
+          <p>
+            O TCLE é o documento formal que detalha todas as informações necessárias para que a decisão de participar seja consciente e livre. Ele traz explicações completas sobre o objetivo do estudo, os procedimentos, riscos, desconfortos, benefícios, proteção dos dados, direitos do participante e formas de contato. O TCLE garante a autonomia da pessoa e formaliza o consentimento, em conformidade com a Resolução CNS 466, 2012 e as diretrizes da CONEP.
+          </p>
+          <p>
+            Para auxiliar o pesquisador, há um modelo didático de Convite e TCLE disponível em
+            <a class="link-inline" href="https://bit.ly/7cep" target="_blank" rel="noopener noreferrer">https://bit.ly/7cep</a>.
+          </p>
+          <p>
+            Existe também uma ferramenta de inteligência artificial capaz de analisar o texto do TCLE, identificar incoerências, sugerir melhorias e apoiar a correção antes da submissão ao Comitê de Ética em Pesquisa. Essa ferramenta está disponível em
+            <a class="link-inline" href="https://bit.ly/tcle-virtual" target="_blank" rel="noopener noreferrer">https://bit.ly/tcle-virtual</a>.
+          </p>
+        </section>
+
+        <section id="importancia">
+          <h2>2. Importância</h2>
+          <p>
+            Convite e TCLE atuam como pilares éticos do início da relação entre pesquisador e participante. Juntos, eles definem o tom de transparência, respeito e segurança que deve permear toda a pesquisa.
+          </p>
+
+          <h3>2.1 Importância do Convite</h3>
+          <p>
+            O Convite cumpre um papel específico dentro do processo de recrutamento de participantes. Ele:
+          </p>
+          <ul>
+            <li>contextualiza o motivo pelo qual a pessoa está sendo abordada;</li>
+            <li>apresenta o pesquisador, sua instituição e sua legitimidade;</li>
+            <li>introduz o tema e a finalidade da pesquisa em poucas linhas;</li>
+            <li>reduz estranhamento e possíveis desconfianças;</li>
+            <li>indica de forma respeitosa que a participação é voluntária;</li>
+            <li>prepara o leitor para a leitura mais detalhada do TCLE.</li>
+          </ul>
+          <p>
+            Em pesquisas online, o Convite aparece geralmente no topo da página, imediatamente antes do TCLE, funcionando como um primeiro diálogo entre pesquisador e participante.
+          </p>
+
+          <h3>2.2 Importância do TCLE</h3>
+          <p>
+            O TCLE é um dos documentos mais relevantes de toda a estrutura ética da pesquisa com seres humanos. Sua importância pode ser compreendida a partir de quatro fundamentos centrais.
+          </p>
+          <ul>
+            <li>
+              <strong>Autonomia</strong>, garante que o participante tenha informações suficientes para decidir com liberdade se deseja participar ou não, compreendendo o que será feito e quais são seus direitos.
+            </li>
+            <li>
+              <strong>Proteção</strong>, descreve de forma honesta os riscos e desconfortos possíveis, mesmo quando mínimos, como cansaço, exposição de opiniões ou lembrança de experiências difíceis.
+            </li>
+            <li>
+              <strong>Transparência científica</strong>, registra que o participante foi esclarecido, reforçando a confiança pública na pesquisa e na instituição.
+            </li>
+            <li>
+              <strong>Confiabilidade ética</strong>, o Sistema CEP, CONEP exige que o TCLE seja coerente com o projeto aprovado. Inconsistências, omissões ou ambiguidades geram pendências e podem impedir o início da pesquisa.
+            </li>
+          </ul>
+          <p>
+            Ferramentas de apoio, como
+            <a class="link-inline" href="https://bit.ly/tcle-virtual" target="_blank" rel="noopener noreferrer">https://bit.ly/tcle-virtual</a>,
+            ajudam a identificar falhas de clareza, lacunas e riscos éticos no texto do TCLE antes da submissão, economizando tempo e reduzindo retrabalho.
+          </p>
+        </section>
+
+        <section id="quem">
+          <h2>3. Quem deve fazer</h2>
+          <p>
+            O Convite e o TCLE devem ser elaborados pelo pesquisador principal, pois apenas ele possui a visão completa do estudo, incluindo objetivos, relevância, procedimentos, população-alvo, riscos e benefícios. Modelos prontos podem servir como base, mas nenhum modelo substitui a necessidade de adaptar o texto ao contexto específico da pesquisa.
+          </p>
+          <p>
+            O orientador, membros da equipe de pesquisa e, quando disponível, especialistas em ética podem contribuir com sugestões, revisões e ajustes. No entanto, a responsabilidade final pelo conteúdo técnico e ético do Convite e do TCLE permanece com o pesquisador principal.
+          </p>
+          <p>
+            O modelo didático em
+            <a class="link-inline" href="https://bit.ly/7cep" target="_blank" rel="noopener noreferrer">https://bit.ly/7cep</a>
+            auxilia na estruturação dos itens essenciais. A ferramenta de auditoria baseada em inteligência artificial em
+            <a class="link-inline" href="https://bit.ly/tcle-virtual" target="_blank" rel="noopener noreferrer">https://bit.ly/tcle-virtual</a>
+            apoia na revisão crítica do texto, mas não substitui o julgamento científico e ético do pesquisador.
+          </p>
+        </section>
+
+        <section id="quando">
+          <h2>4. Quando fazer</h2>
+          <p>
+            O Convite e o TCLE devem ser escritos apenas depois que o projeto de pesquisa estiver finalizado na sua versão científica. A sequência recomendada é:
+          </p>
+          <ol>
+            <li>concluir a versão final do projeto de pesquisa;</li>
+            <li>elaborar o Convite com base nesse projeto;</li>
+            <li>elaborar o TCLE alinhado ao texto do projeto;</li>
+            <li>revisar Convite e TCLE com a equipe e, se possível, com apoio de ferramentas como
+              <a class="link-inline" href="https://bit.ly/tcle-virtual" target="_blank" rel="noopener noreferrer">https://bit.ly/tcle-virtual</a>;
+            </li>
+            <li>submeter projeto, Convite e TCLE juntos na Plataforma Brasil;</li>
+            <li>utilizar apenas a versão aprovada pelo Comitê de Ética em Pesquisa.</li>
+          </ol>
+          <p>
+            Qualquer alteração posterior na metodologia, nos riscos, nos procedimentos ou no tipo de dado coletado exige revisão do TCLE e, em muitos casos, nova análise pelo CEP. O mesmo vale para o texto do Convite, que deve continuar coerente com o projeto e com o TCLE ao longo de toda a pesquisa.
+          </p>
+        </section>
+
+        <section id="onde">
+          <h2>5. Onde fazer</h2>
+          <p>
+            O Convite e o TCLE podem ser elaborados em qualquer ambiente de trabalho que ofereça condições de concentração e acesso aos documentos necessários, como:
+          </p>
+          <ul>
+            <li>projeto de pesquisa na versão final;</li>
+            <li>normas do Sistema CEP e CONEP;</li>
+            <li>modelos institucionais da instituição;</li>
+            <li>modelo didático em
+              <a class="link-inline" href="https://bit.ly/7cep" target="_blank" rel="noopener noreferrer">https://bit.ly/7cep</a>;
+            </li>
+            <li>ferramenta de auditoria inteligente em
+              <a class="link-inline" href="https://bit.ly/tcle-virtual" target="_blank" rel="noopener noreferrer">https://bit.ly/tcle-virtual</a>.
+            </li>
+          </ul>
+          <p>
+            Em termos práticos, o Convite e o TCLE devem existir em duas formas principais, versão digital e versão impressa. A versão digital é usada na submissão à Plataforma Brasil e em pesquisas realizadas inteiramente online. A versão impressa é utilizada em coletas de dados presenciais.
+          </p>
+          <p>
+            Em pesquisas online, recomenda-se a seguinte organização na página:
+          </p>
+          <ul>
+            <li>primeiro, o Convite, em linguagem breve e acolhedora;</li>
+            <li>em seguida, o texto completo do TCLE, ou um resumo com link para a versão integral;</li>
+            <li>logo abaixo, o campo para o participante digitar a palavra “CONCORDO”;</li>
+            <li>por fim, o formulário de coleta de dados.</li>
+          </ul>
+          <p>
+            Esse fluxo melhora a experiência do participante e garante que ele tenha acesso às informações essenciais antes de responder ao formulário.
+          </p>
+        </section>
+
+        <section id="como">
+          <h2>6. Como fazer</h2>
+
+          <h3>6.1 Como elaborar o Convite</h3>
+          <p>
+            O Convite deve ser escrito com objetividade, educação e clareza. Ele precisa responder, em poucas linhas, a cinco perguntas básicas.
+          </p>
+          <ol>
+            <li><strong>Quem está convidando?</strong> nome completo do pesquisador, instituição, área de atuação e forma de contato.</li>
+            <li><strong>Por que a pessoa está sendo convidada?</strong> relevância do tema e, quando apropriado, critérios gerais de inclusão.</li>
+            <li><strong>Sobre o que é a pesquisa?</strong> uma frase simples descrevendo o objetivo.</li>
+            <li><strong>O que será solicitado?</strong> tempo estimado de participação, tipo de perguntas ou atividades.</li>
+            <li><strong>Onde ler o TCLE?</strong> indicação clara de que o TCLE completo está logo abaixo na página ou disponível em link específico.</li>
+          </ol>
+          <p>
+            O Convite é parte do processo de recrutamento, mas não substitui o TCLE. Ele abre a conversa, prepara o terreno e demonstra respeito desde o primeiro contato.
+          </p>
+
+          <h3>6.2 Como elaborar o TCLE</h3>
+          <p>
+            O TCLE deve ser exaustivo no conteúdo, porém claro na forma. A linguagem deve ser simples, evitando jargões técnicos. Uma estrutura mínima recomendada inclui:
+          </p>
+          <ol>
+            <li>
+              <strong>Identificação da pesquisa</strong> título completo, instituição, pesquisadores responsáveis, contatos e, quando aplicável, número do protocolo na Plataforma Brasil.
+            </li>
+            <li>
+              <strong>Objetivo da pesquisa</strong> descrição em linguagem comum, explicando o propósito geral do estudo.
+            </li>
+            <li>
+              <strong>Procedimentos</strong> detalhamento do que será feito, onde, com que frequência e por quanto tempo, incluindo instrumentos, entrevistas, questionários ou exames.
+            </li>
+            <li>
+              <strong>Riscos e desconfortos</strong> descrição honesta de quaisquer riscos físicos, emocionais, sociais ou de privacidade, mesmo que mínimos.
+            </li>
+            <li>
+              <strong>Benefícios</strong> indicação de benefícios diretos e indiretos, sempre sem promessas exageradas ou irreais.
+            </li>
+            <li>
+              <strong>Confidencialidade</strong> explicação de como os dados serão coletados, protegidos, armazenados, criptografados quando necessário, por quanto tempo ficarão guardados e quem poderá acessá-los.
+            </li>
+            <li>
+              <strong>Voluntariedade e desistência</strong> esclarecimento de que a participação é opcional e de que a pessoa pode desistir a qualquer momento, sem prejuízo algum.
+            </li>
+            <li>
+              <strong>Direitos do participante</strong> acesso às informações, esclarecimentos adicionais, direito de não responder perguntas específicas e acesso posterior aos resultados globais do estudo, quando pertinente.
+            </li>
+            <li>
+              <strong>Canais de contato</strong> telefones, e-mails e endereço do pesquisador responsável e do Comitê de Ética em Pesquisa.
+            </li>
+            <li>
+              <strong>Forma de confirmação</strong> assinatura manuscrita em pesquisas presenciais ou declaração eletrônica em pesquisas online.
+            </li>
+          </ol>
+
+          <h3>6.3 Exigências especiais para pesquisas online</h3>
+          <p>
+            Em pesquisas realizadas em ambiente virtual, dois elementos adicionais são considerados essenciais.
+          </p>
+          <ul>
+            <li>
+              Campo para que o participante <strong>digite a palavra “CONCORDO”</strong>, como forma de registrar que leu e aceitou os termos do TCLE.
+            </li>
+            <li>
+              Aviso explícito pedindo que o participante <strong>não envie dados sensíveis</strong> que não estejam previstos no projeto aprovado, como CPF, número de identidade, endereço completo ou informações que permitam a identificação direta indevida.
+            </li>
+          </ul>
+          <p>
+            O modelo apresentado em
+            <a class="link-inline" href="https://bit.ly/7cep" target="_blank" rel="noopener noreferrer">https://bit.ly/7cep</a>
+            ilustra, de maneira visual, um arranjo simples e eficiente de Convite, TCLE e formulário em uma mesma página.
+          </p>
+          <p>
+            Já a ferramenta em
+            <a class="link-inline" href="https://bit.ly/tcle-virtual" target="_blank" rel="noopener noreferrer">https://bit.ly/tcle-virtual</a>
+            permite ao pesquisador submeter o texto do TCLE para análise automatizada, recebendo sugestões de melhoria quanto à clareza, coerência e completude antes de encaminhar a versão final ao CEP.
+          </p>
+        </section>
+
+        <section id="consideracoes">
+          <h2>7. Considerações finais</h2>
+          <p>
+            O Convite e o TCLE são documentos essenciais para o respeito à dignidade humana na pesquisa. Eles estabelecem transparência, segurança e confiança entre pesquisador e participante, desde o primeiro contato até a confirmação do consentimento.
+          </p>
+          <p>
+            Um Convite bem escrito acolhe, esclarece o contexto e convida de forma respeitosa. Um TCLE claro, completo e coerente informa, protege e registra o exercício da autonomia do participante. Juntos, esses documentos:
+          </p>
+          <ul>
+            <li>reduzem pendências éticas na avaliação do CEP;</li>
+            <li>fortalecem a credibilidade científica do estudo;</li>
+            <li>melhoram a experiência do participante;</li>
+            <li>protegem tanto o voluntário quanto o pesquisador;</li>
+            <li>reforçam a integridade e a qualidade da pesquisa.</li>
+          </ul>
+          <p>
+            Recursos como o modelo em
+            <a class="link-inline" href="https://bit.ly/7cep" target="_blank" rel="noopener noreferrer">https://bit.ly/7cep</a>
+            e a auditoria inteligente em
+            <a class="link-inline" href="https://bit.ly/tcle-virtual" target="_blank" rel="noopener noreferrer">https://bit.ly/tcle-virtual</a>
+            tornam o processo mais eficiente e seguro, mas não substituem o compromisso ético e a responsabilidade do pesquisador.
+          </p>
+          <p>
+            Quando bem elaborados e utilizados, o Convite e o TCLE transformam o início da pesquisa em uma experiência ética, respeitosa e alinhada às melhores práticas nacionais e internacionais.
+          </p>
+        </section>
+
+        <footer class="footer">
+          <div>
+            Capítulo integrante do projeto FiatLux, pesquisa em ciências da saúde, versão educativa para estudantes e pesquisadores iniciantes.
+          </div>
+          <div>
+            Conteúdo em desenvolvimento contínuo, com licença Creative Commons, atribuição, uso não comercial, compartilhamento pela mesma licença.
+          </div>
+          <div>
+            Autor, Aldemar Araujo Castro, contato em
+            <a href="https://instagram.com/aldemararaujo" target="_blank" rel="noopener noreferrer">instagram.com/aldemararaujo</a>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const toggleBtn = document.getElementById("themeToggle");
+
+      function applyTheme(theme) {
+        if (theme === "dark") {
+          body.classList.add("dark-mode");
+          toggleBtn.querySelector("span").textContent = "Modo claro";
+        } else {
+          body.classList.remove("dark-mode");
+          toggleBtn.querySelector("span").textContent = "Modo escuro";
+        }
+      }
+
+      const storedTheme = localStorage.getItem("fiatlux-theme");
+      if (storedTheme === "dark" || storedTheme === "light") {
+        applyTheme(storedTheme);
+      } else {
+        applyTheme("light");
+      }
+
+      toggleBtn.addEventListener("click", function () {
+        const isDark = body.classList.contains("dark-mode");
+        const newTheme = isDark ? "light" : "dark";
+        applyTheme(newTheme);
+        localStorage.setItem("fiatlux-theme", newTheme);
+      });
+    })();
+  </script>
+</body>
+</html>
