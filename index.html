@@ -5,18 +5,23 @@
   <title>Ebook, Formulários de Coleta de Dados em Pesquisas com Seres Humanos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Guia prático para construção ética e técnica de formulários de coleta de dados em pesquisas com seres humanos, alinhado às normas da CONEP, ao Sistema CEP, Conep e à LGPD." />
+
   <style>
     :root {
       color-scheme: light dark;
-      --bg-color-light: #f7f7f7;
-      --text-color-light: #222222;
-      --accent-color: #0055aa;
-      --border-color-light: #dddddd;
-      --bg-color-dark: #121212;
-      --text-color-dark: #f0f0f0;
-      --border-color-dark: #333333;
-      --code-bg-light: #eeeeee;
-      --code-bg-dark: #1f1f1f;
+      --bg-light: #ffffff;
+      --bg-page-light: #f7f7f9;
+      --text-light: #222222;
+      --muted-light: #555555;
+      --accent: #0055aa;
+      --accent-soft: #e4efff;
+      --border-soft-light: #dddddd;
+
+      --bg-dark: #0f1115;
+      --bg-page-dark: #151821;
+      --text-dark: #f2f2f5;
+      --muted-dark: #b0b3c0;
+      --border-soft-dark: #333745;
     }
 
     body {
@@ -24,114 +29,209 @@
       padding: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.6;
-      background-color: var(--bg-color-light);
-      color: var(--text-color-light);
+      background-color: var(--bg-light);
+      color: var(--text-light);
     }
 
     body.dark {
-      background-color: var(--bg-color-dark);
-      color: var(--text-color-dark);
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
     }
 
     .page {
       max-width: 860px;
       margin: 0 auto;
-      padding: 1.5rem 1.25rem 3rem 1.25rem;
+      padding: 1.5rem 1rem 3rem 1rem;
+      background-color: var(--bg-page-light);
+    }
+
+    body.dark .page {
+      background-color: var(--bg-page-dark);
     }
 
     header {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
     }
 
-    .top-bar {
+    .theme-row {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
+      margin-bottom: 0.8rem;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
       align-items: center;
-      font-size: 0.9rem;
-      margin-bottom: 0.75rem;
-    }
-
-    #toggle-theme {
-      border: 1px solid var(--border-color-light);
-      background: transparent;
-      padding: 0.25rem 0.75rem;
+      justify-content: flex-start;
+      gap: 0.5rem;
+      padding: 0.25rem 0.6rem;
       border-radius: 999px;
+      border: 1px solid var(--border-soft-light);
+      background: rgba(255, 255, 255, 0.9);
       cursor: pointer;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      white-space: nowrap;
     }
 
-    body.dark #toggle-theme {
-      border-color: var(--border-color-dark);
+    body.dark .theme-toggle {
+      border-color: var(--border-soft-dark);
+      background: rgba(15, 17, 21, 0.9);
+    }
+
+    .theme-toggle-label {
+      font-weight: 500;
+    }
+
+    .theme-toggle-pill {
+      width: 34px;
+      height: 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft-light);
+      display: inline-flex;
+      align-items: center;
+      padding: 1px;
+      box-sizing: border-box;
+      background: #e2e8f0;
+    }
+
+    body.dark .theme-toggle-pill {
+      border-color: var(--border-soft-dark);
+      background: #2a2f3a;
+    }
+
+    .theme-toggle-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      transform: translateX(0);
+      transition: transform 0.18s ease;
+    }
+
+    body.dark .theme-toggle-thumb {
+      transform: translateX(14px);
+    }
+
+    .eyebrow {
+      font-size: 0.95rem;
+      color: var(--muted-light);
+      margin-bottom: 0.25rem;
+    }
+
+    body.dark .eyebrow {
+      color: var(--muted-dark);
     }
 
     h1 {
       font-size: 1.9rem;
-      margin: 0.25rem 0 0.75rem 0;
-    }
-
-    h2 {
-      margin-top: 2rem;
-      margin-bottom: 0.6rem;
-      font-size: 1.3rem;
-      border-bottom: 1px solid currentColor;
-      padding-bottom: 0.25rem;
-    }
-
-    h3 {
-      margin-top: 1.4rem;
-      margin-bottom: 0.4rem;
-      font-size: 1.1rem;
+      margin: 0 0 0.7rem 0;
     }
 
     p {
       margin: 0.4rem 0 0.7rem 0;
     }
 
-    ul {
-      padding-left: 1.3rem;
-      margin: 0.3rem 0 0.7rem 0;
-    }
-
-    li {
-      margin: 0.15rem 0;
-    }
-
-    .meta-block {
-      font-size: 0.9rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .meta-block p {
-      margin: 0.15rem 0;
-    }
-
     .separator {
-      margin: 1rem 0;
       border: 0;
-      border-top: 1px solid currentColor;
-      opacity: 0.2;
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+      margin: 1rem 0;
+    }
+
+    body.dark .separator {
+      border-top-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .card {
+      border-radius: 0.75rem;
+      padding: 0.85rem 1rem;
+      margin-bottom: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border-soft-light);
+    }
+
+    body.dark .card {
+      background: rgba(15, 17, 21, 0.92);
+      border-color: var(--border-soft-dark);
+    }
+
+    .card-meta-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.2rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .meta-grid span {
+      display: block;
+    }
+
+    .meta-detail {
+      font-size: 0.9rem;
+      color: var(--muted-light);
+      margin-top: 0.3rem;
+    }
+
+    body.dark .meta-detail {
+      color: var(--muted-dark);
+    }
+
+    .toc-card h2 {
+      margin: 0 0 0.4rem 0;
+      font-size: 1.1rem;
+    }
+
+    .toc-card ul {
+      margin: 0.25rem 0 0.1rem 0;
+      padding-left: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .toc-card li {
+      margin: 0.15rem 0;
     }
 
     a {
-      color: var(--accent-color);
+      color: var(--accent);
       text-decoration: none;
-    }
-
-    body.dark a {
-      color: #66aaff;
     }
 
     a:hover {
       text-decoration: underline;
     }
 
-    .toc {
-      margin-bottom: 1.5rem;
-      font-size: 0.98rem;
+    body.dark a {
+      color: #7eb1ff;
     }
 
-    .toc ul {
-      list-style-type: disc;
+    h2 {
+      margin-top: 1.8rem;
+      margin-bottom: 0.6rem;
+      font-size: 1.35rem;
+    }
+
+    h3 {
+      margin-top: 1.2rem;
+      margin-bottom: 0.4rem;
+      font-size: 1.05rem;
+    }
+
+    ul {
+      padding-left: 1.25rem;
+      margin: 0.3rem 0 0.8rem 0;
+    }
+
+    li {
+      margin: 0.15rem 0;
+    }
+
+    em {
+      font-style: italic;
     }
 
     code {
@@ -139,17 +239,21 @@
       font-size: 0.9rem;
       padding: 0.05rem 0.2rem;
       border-radius: 3px;
-      background-color: var(--code-bg-light);
+      background: #eceff4;
     }
 
     body.dark code {
-      background-color: var(--code-bg-dark);
+      background: #1f2430;
     }
 
     footer {
       margin-top: 2.5rem;
       font-size: 0.85rem;
-      opacity: 0.8;
+      color: var(--muted-light);
+    }
+
+    body.dark footer {
+      color: var(--muted-dark);
     }
 
     @media (min-width: 900px) {
@@ -162,12 +266,16 @@
 <body>
   <div class="page">
     <header>
-      <div class="top-bar">
-        <div>Modo escuro</div>
-        <button id="toggle-theme" type="button">Ativar</button>
+      <div class="theme-row">
+        <button id="toggle-theme" type="button" class="theme-toggle" aria-pressed="false">
+          <span class="theme-toggle-label">Modo escuro</span>
+          <span class="theme-toggle-pill" aria-hidden="true">
+            <span class="theme-toggle-thumb"></span>
+          </span>
+        </button>
       </div>
 
-      <div style="font-size:0.95rem; opacity:0.9;">Guia prático em instrumentos de coleta de dados</div>
+      <div class="eyebrow">Guia prático em instrumentos de coleta de dados</div>
       <h1>Formulários de Coleta de Dados em Pesquisas com Seres Humanos</h1>
       <p>
         Ebook é orientado às normas brasileiras para apoiar a construção ética e técnica de formulários de coleta de dados em pesquisas com seres humanos, com foco em autonomia, sigilo, privacidade e proteção de dados.
@@ -175,22 +283,21 @@
 
       <hr class="separator" />
 
-      <div class="meta-block">
-        <p>Tempo de leitura, 18 minutos</p>
-        <p>Quantidade de palavras, aproximadamente 3.500</p>
-        <p>Criação, 03/12/2025</p>
-        <p>Atualização, 03/12/2025</p>
+      <div class="card">
+        <div class="card-meta-title">Informações gerais</div>
+        <div class="meta-grid">
+          <span>Tempo de leitura, 18 minutos</span>
+          <span>Quantidade de palavras, aproximadamente 3.500</span>
+          <span>Criação, 03/12/2025</span>
+          <span>Atualização, 03/12/2025</span>
+        </div>
+        <div class="meta-detail">
+          Baseado nas Resoluções, CNS 466/2012 e 510/2016.  
+          Foco em Sistema CEP, Conep. Uso acadêmico e regulatório.
+        </div>
       </div>
 
-      <div class="meta-block">
-        <p>Baseado nas Resoluções, CNS 466/2012 e 510/2016</p>
-        <p>Foco em Sistema CEP, Conep</p>
-        <p>Uso acadêmico e regulatório</p>
-      </div>
-
-      <hr class="separator" />
-
-      <section class="toc" aria-label="Índice">
+      <div class="card toc-card">
         <h2 id="indice">Índice</h2>
         <ul>
           <li><a href="#sec-1">1. Para que servem os Formulários de Coleta de Dados</a></li>
@@ -202,10 +309,11 @@
           <li><a href="#sec-7">7. Perguntas que exigem aviso de sensibilidade</a></li>
           <li><a href="#sec-8">8. Proteção de dados e LGPD</a></li>
           <li><a href="#sec-9">9. Responsabilidades do pesquisador durante a aplicação</a></li>
-          <li><a href="#sec-10">10. GPT Personalizado</a></li>
-          <li><a href="#sec-11">11. Considerações finais</a></li>
+          <li><a href="#sec-10">10. Formulário de coleta de dados online</a></li>
+          <li><a href="#sec-11">11. GPT Personalizado</a></li>
+          <li><a href="#sec-12">12. Considerações finais</a></li>
         </ul>
-      </section>
+      </div>
     </header>
 
     <main>
@@ -374,7 +482,28 @@
       </section>
 
       <section id="sec-10">
-        <h2>10. GPT Personalizado</h2>
+        <h2>10. Formulário de coleta de dados online</h2>
+        <p>
+          Quando a coleta de dados é realizada em ambiente virtual, por exemplo em plataformas como Google Formulários, a estrutura do caminho do participante precisa ser planejada com o mesmo cuidado ético do formulário em papel. Nesse contexto, o formulário online deve ser apresentado sempre em conjunto com o convite para participar da pesquisa e com o Termo de Consentimento Livre e Esclarecido, em uma sequência clara e previsível.
+        </p>
+        <p>
+          A forma recomendada é que o participante receba primeiro o convite, em linguagem simples, informando o tema da pesquisa, o caráter voluntário, o tempo estimado de resposta e o fato de que a participação será anônima ou sigilosa. Em seguida, deve lhe ser apresentado o TCLE completo, para leitura e aceite. Apenas após o aceite explícito do Termo o sistema deve liberar o acesso ao formulário de coleta de dados.
+        </p>
+        <p>
+          Uma boa prática é utilizar uma página inicial específica no formulário online, contendo o convite resumido, a informação de que o TCLE será apresentado na sequência e, quando desejado, links para consulta prévia ao texto integral do TCLE e ao modelo do instrumento. A primeira pergunta dessa página pode ser uma questão simples, como “Aceito o convite para participar da pesquisa”, com as opções “Sim” e “Não”. Ao selecionar “Não”, o participante encerra o processo sem qualquer prejuízo. Ao selecionar “Sim”, avança para o TCLE e, depois, para o formulário.
+        </p>
+        <p>
+          Essa estrutura reforça a autonomia em ambiente digital, evita que o participante seja conduzido diretamente às perguntas sem ter lido o TCLE e organiza o fluxo de forma intuitiva. O exemplo didático disponível em
+          <a href="https://bit.ly/7cep" target="_blank" rel="noopener noreferrer">https://bit.ly/7cep</a>
+          ilustra essa lógica, combinando convite, TCLE e formulário em camadas sucessivas, com linguagem clara e foco na proteção do participante.
+        </p>
+        <p>
+          Nos formulários online, é importante ainda evitar a coleta automática de e mails, nomes de usuário ou qualquer identificador digital desnecessário. Sempre que possível, deve se desabilitar a exigência de login obrigatório e orientar o participante a não incluir informações pessoais nas respostas abertas. Assim, os mesmos princípios de anonimato, minimização de dados e respeito à privacidade são preservados no ambiente virtual.
+        </p>
+      </section>
+
+      <section id="sec-11">
+        <h2>11. GPT Personalizado</h2>
         <p>
           Para apoiar pesquisadores na verificação ética e técnica de seus instrumentos de coleta de dados, foi desenvolvido um GPT personalizado com base nas normas da CONEP e nas boas práticas nacionais de ética em pesquisa. Esse recurso analisa o formulário enviado, identifica possíveis riscos, aponta pendências frequentes e sugere ajustes que podem reduzir problemas na submissão ao Comitê de Ética.
         </p>
@@ -389,8 +518,8 @@
         </p>
       </section>
 
-      <section id="sec-11">
-        <h2>11. Considerações finais</h2>
+      <section id="sec-12">
+        <h2>12. Considerações finais</h2>
         <p>
           A construção de um formulário de coleta de dados é uma etapa central do processo de pesquisa em seres humanos, porque representa o ponto de contato mais visível entre o projeto e a vida concreta dos participantes. Um instrumento bem elaborado não é apenas tecnicamente eficiente, mas expressa respeito, responsabilidade e compromisso ético. Cada decisão de perguntar ou não perguntar, de detalhar ou simplificar, de tornar obrigatória ou opcional uma resposta, comunica ao participante como ele é visto pelo pesquisador.
         </p>
@@ -413,17 +542,17 @@
 
   <script>
     (function() {
-      const btn = document.getElementById("toggle-theme");
-      const stored = window.localStorage.getItem("theme");
+      var btn = document.getElementById("toggle-theme");
+      var stored = window.localStorage.getItem("theme");
 
       if (stored === "dark") {
         document.body.classList.add("dark");
-        btn.textContent = "Desativar";
+        btn.setAttribute("aria-pressed", "true");
       }
 
       btn.addEventListener("click", function() {
-        const isDark = document.body.classList.toggle("dark");
-        btn.textContent = isDark ? "Desativar" : "Ativar";
+        var isDark = document.body.classList.toggle("dark");
+        btn.setAttribute("aria-pressed", isDark ? "true" : "false");
         window.localStorage.setItem("theme", isDark ? "dark" : "light");
       });
     })();
