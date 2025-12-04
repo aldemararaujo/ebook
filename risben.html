@@ -1,0 +1,945 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ebook, Riscos e Benefícios em Pesquisas com Seres Humanos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f9fafb;
+      --bg-soft: #e5e7eb;
+      --card: #ffffff;
+      --accent: #16a34a;
+      --accent-soft: rgba(22, 163, 74, 0.12);
+      --text: #020617;
+      --muted: #6b7280;
+      --border: #d1d5db;
+      --code: #111827;
+      --shadow-soft: 0 18px 60px rgba(15, 23, 42, 0.12);
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    }
+
+    body[data-theme="dark"] {
+      --bg: #020617;
+      --bg-soft: #0f172a;
+      --card: #020617;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.14);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --code: #020617;
+      --shadow-soft: 0 18px 60px rgba(15, 23, 42, 0.8);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: radial-gradient(circle at top, var(--bg-soft) 0, var(--bg) 50%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.4s ease, color 0.2s ease;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 32px auto 40px auto;
+      padding: 24px 20px 40px 20px;
+    }
+
+    @media (min-width: 768px) {
+      .page {
+        padding: 32px 32px 56px 32px;
+      }
+    }
+
+    .ebook {
+      background: linear-gradient(135deg, var(--card), var(--card));
+      border-radius: 32px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: var(--shadow-soft);
+      padding: 28px 22px 32px 22px;
+      backdrop-filter: blur(16px);
+      position: relative;
+    }
+
+    @media (min-width: 900px) {
+      .ebook {
+        padding: 40px 40px 48px 40px;
+      }
+    }
+
+    header {
+      margin-bottom: 32px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      background: var(--bg-soft);
+      border-radius: var(--radius-pill);
+      padding: 6px 14px 6px 8px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #bbf7d0 0, #22c55e 40%, #15803d 100%);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.7);
+    }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 34px);
+      margin-top: 18px;
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .meta-pill {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(148, 163, 184, 0.08);
+    }
+
+    .reading-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .reading-pill {
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(148, 163, 184, 0.06);
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 28px 0 26px 0;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 2.1fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .toc-card {
+      background: radial-gradient(circle at top left, var(--accent-soft), var(--card));
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(52, 211, 153, 0.45);
+      padding: 18px;
+    }
+
+    .toc-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .toc-list {
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .toc-list li {
+      margin: 4px 0;
+    }
+
+    .toc-list a {
+      color: var(--text);
+      text-decoration: none;
+      opacity: 0.9;
+    }
+
+    .toc-list a:hover {
+      color: var(--accent);
+    }
+
+    main section {
+      margin-bottom: 28px;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top right, rgba(148, 163, 184, 0.12), var(--card));
+    }
+
+    main section:nth-child(odd) {
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.11), var(--card));
+    }
+
+    main section:nth-child(even) {
+      background: radial-gradient(circle at top right, rgba(22, 163, 74, 0.12), var(--card));
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+
+    h4 {
+      font-size: 14px;
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+
+    p {
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    strong {
+      color: var(--text);
+    }
+
+    ul, ol {
+      margin-left: 18px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-soft);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 10px 0;
+      font-size: 13px;
+    }
+
+    thead {
+      background: var(--bg-soft);
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 7px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    td {
+      color: var(--text);
+    }
+
+    .checklist {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    .checklist li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 4px;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .fluxo-step {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 6px 14px;
+      font-size: 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(148, 163, 184, 0.06);
+      color: var(--text);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease, transform 0.1s ease, color 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(148, 163, 184, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle span {
+      font-size: 13px;
+    }
+
+    .theme-toggle-emoji {
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .site-footer {
+      margin-top: 12px;
+      font-size: 11px;
+      color: #6b7280;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .site-footer span {
+      display: block;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body {
+        transition: none;
+      }
+      .theme-toggle {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="ebook">
+      <button id="themeToggle" class="theme-toggle" type="button">
+        <span class="theme-toggle-emoji" aria-hidden="true">🌙</span>
+        <span id="themeToggleLabel">Modo escuro</span>
+      </button>
+
+      <header>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>Guia prático em ética em pesquisa</span>
+        </div>
+        <h1>Riscos e Benefícios em Pesquisas com Seres Humanos</h1>
+        <p class="subtitle">
+          Ebook é orientado às normas brasileiras para apoiar a elaboração da seção de riscos e benefícios em projetos de pesquisa e termos de consentimento.
+<br>
+<hr>
+Tempo de leitura: 18 minutos<br>
+Quantidade de palavras: 3.815
+<br>Criação: 12/11/2025
+<br>Atualização: 13/11/2025
+        </p>
+
+        <div class="reading-meta">
+
+
+          <div class="meta-pill">Baseado nas Resoluções: CNS 466/2012 e 510/2016</div>
+          <div class="meta-pill">Foco em Sistema CEP/Conep</div>
+          <div class="meta-pill">Uso acadêmico e regulatório</div>
+        </div>
+      </header>
+
+      <hr class="divider" />
+
+      <div class="layout">
+        <aside class="toc-card">
+          <div class="toc-title">Índice</div>
+          <ul class="toc-list">
+            <li><a href="#intro">1. Introdução</a></li>
+            <li><a href="#fundamentos">2. Fundamentos éticos</a></li>
+            <li><a href="#conceitos">3. Conceitos de risco e benefício</a></li>
+            <li><a href="#tipos-risco">4. Tipologia dos riscos</a></li>
+            <li><a href="#manejo-riscos">5. Manejo ético dos riscos</a></li>
+            <li><a href="#beneficios">6. Benefícios da pesquisa</a></li>
+            <li><a href="#checklist">7. Checklist para projetos</a></li>
+            <li><a href="#lista-riscos">8. Lista agrupada de riscos</a></li>
+            <li><a href="#sigilo-priv-conf">9. Privacidade, sigilo e confidencialidade</a></li>
+            <li><a href="#fluxograma">10. Fluxograma informacional</a></li>
+            <li><a href="#consideracoes">11. Considerações finais</a></li>
+            <li><a href="#gpt-personalizado">12. GPT Personalizado</a></li>
+          </ul>
+        </aside>
+
+        <main>
+          <!-- 1. Introdução -->
+          <section id="intro">
+            <span class="pill">1. Introdução</span>
+            <h2>1. Introdução</h2>
+            <p>
+              Toda pesquisa envolvendo seres humanos precisa equilibrar dois eixos centrais, a produção de conhecimento científico e a proteção da dignidade, da integridade e dos direitos dos participantes. No Brasil, esse equilíbrio é regulado principalmente pela Resolução do Conselho Nacional de Saúde, CNS, número 466 de 2012, voltada para pesquisas em saúde e biomédicas, e pela Resolução CNS número 510 de 2016, específica para pesquisas em ciências humanas e sociais.
+            </p>
+            <p>
+              Este ebook reúne, em uma única página, conceitos, listas de riscos, estratégias de manejo e modelos de redação que podem ser usados diretamente em projetos, pareceres e termos de consentimento livre e esclarecido, TCLE. A abordagem é prática, mas sempre alinhada aos princípios da bioética, autonomia, beneficência, não maleficência, justiça e relevância social.
+            </p>
+          </section>
+
+          <!-- 2. Fundamentos éticos -->
+          <section id="fundamentos">
+            <span class="pill">2. Fundamentos éticos</span>
+            <h2>2. Fundamentos éticos</h2>
+            <p>
+              As resoluções brasileiras incorporam referenciais da bioética, afirmando que toda pesquisa com seres humanos deve:
+            </p>
+            <ul>
+              <li><strong>Respeitar a autonomia</strong>, garantindo decisão livre, consciente e informada do participante.</li>
+              <li><strong>Promover a beneficência</strong>, buscando maximizar benefícios individuais e coletivos.</li>
+              <li><strong>Assegurar a não maleficência</strong>, evitando danos previsíveis e reduzindo riscos inevitáveis.</li>
+              <li><strong>Promover justiça e equidade</strong>, evitando exploração de populações vulneráveis e distribuindo de forma justa riscos e benefícios.</li>
+              <li><strong>Garantir relevância social</strong>, para que a pesquisa contribua para a melhoria das condições de vida e de saúde.</li>
+            </ul>
+            <p>
+              A eticidade de um estudo depende da ponderação honesta entre riscos e benefícios e da forma como esses elementos são apresentados aos participantes, ao Comitê de Ética em Pesquisa e à sociedade.
+            </p>
+          </section>
+
+          <!-- 3. Conceitos de risco e benefício -->
+          <section id="conceitos">
+            <span class="pill">3. Conceitos de risco e benefício</span>
+            <h2>3. Conceitos de risco e benefício</h2>
+
+            <h3>3.1. Conceito de risco</h3>
+            <p>
+              Risco é a possibilidade de ocorrência de dano em qualquer dimensão da pessoa participante, física, psíquica, moral, intelectual, social, cultural, espiritual, material ou informacional. Toda pesquisa com seres humanos envolve algum nível de risco, mesmo em estudos considerados de intervenção mínima, por exemplo, aplicação de questionários ou entrevistas sobre temas sensíveis.
+            </p>
+
+            <h3>3.2. Conceito de benefício</h3>
+            <p>
+              Benefícios são os ganhos, vantagens ou contribuições gerados pela pesquisa, que podem ser diretos para os participantes ou indiretos para a comunidade e para a sociedade. A pesquisa eticamente aceitável é aquela em que os benefícios esperados justificam, e superam, os riscos envolvidos, desde que estes sejam assumidos de forma consciente pelo participante.
+            </p>
+          </section>
+
+          <!-- 4. Tipologia dos riscos -->
+          <section id="tipos-risco">
+            <span class="pill">4. Tipologia dos riscos</span>
+            <h2>4. Tipologia dos riscos</h2>
+            <p>
+              A seguir estão os tipos de risco mais frequentes em pesquisas envolvendo seres humanos, organizados por grupos de similaridade.
+            </p>
+
+            <h3>4.1. Riscos físicos</h3>
+            <ul>
+              <li>Dor, hematomas, desconforto e infecção em coletas, punções, biópsias.</li>
+              <li>Reações adversas e efeitos colaterais de medicamentos, vacinas, substâncias.</li>
+              <li>Tontura, síncope, fadiga, mal estar em testes de esforço e avaliações físicas.</li>
+              <li>Acidentes com equipamentos, quedas, queimaduras, alergias de contato.</li>
+            </ul>
+
+            <h3>4.2. Riscos psicológicos ou emocionais</h3>
+            <ul>
+              <li>Ansiedade, vergonha, medo, estresse durante entrevistas e questionários sensíveis.</li>
+              <li>Reativação de memórias dolorosas, luto, violência, discriminação.</li>
+              <li>Frustração por desempenho em testes cognitivos ou psicológicos.</li>
+              <li>Vínculos emocionais excessivos com a equipe de pesquisa.</li>
+            </ul>
+
+            <h3>4.3. Riscos clínicos e biológicos</h3>
+            <ul>
+              <li>Exposição a agentes infecciosos em coletas e manuseio de material biológico.</li>
+              <li>Acidentes com perfurocortantes e risco de contaminação.</li>
+              <li>Manipulação de substâncias radioativas ou tóxicas.</li>
+            </ul>
+
+            <h3>4.4. Riscos sociais</h3>
+            <ul>
+              <li>Estigmatização e discriminação por participar de pesquisa.</li>
+              <li>Conflitos familiares, profissionais ou comunitários por informações reveladas.</li>
+              <li>Rotulação de grupos ou comunidades em publicações e relatórios.</li>
+            </ul>
+
+            <h3>4.5. Riscos de privacidade, sigilo e confidencialidade</h3>
+            <ul>
+              <li>Violação de privacidade por coleta em ambiente inadequado.</li>
+              <li>Quebra de sigilo em relatos que permitam identificar participantes.</li>
+              <li>Falhas de confidencialidade por segurança digital insuficiente, vazamento de bancos de dados.</li>
+            </ul>
+
+            <h3>4.6. Riscos morais e culturais</h3>
+            <ul>
+              <li>Desrespeito a valores, crenças religiosas e costumes locais.</li>
+              <li>Linguagem ofensiva ou inadequada a um grupo específico.</li>
+              <li>Uso indevido de símbolos, imagens ou saberes tradicionais.</li>
+            </ul>
+
+            <h3>4.7. Riscos ético legais e hierárquicos</h3>
+            <ul>
+              <li>Consentimento viciado em contextos de hierarquia, professor e aluno, chefe e subordinado, profissional de saúde e paciente.</li>
+              <li>Uso de dados sem autorização de responsáveis legais, especialmente com crianças e adolescentes.</li>
+              <li>Violação de direitos autorais, de imagem ou de dados pessoais.</li>
+            </ul>
+
+            <h3>4.8. Riscos operacionais e logísticos</h3>
+            <ul>
+              <li>Desorganização de cronograma com sobrecarga de visitas ou contatos.</li>
+              <li>Falta de ressarcimento de transporte e alimentação, oneração do participante.</li>
+              <li>Falhas técnicas, perda de amostras, perda de arquivos.</li>
+            </ul>
+
+            <h3>4.9. Riscos reprodutivos e gestacionais</h3>
+            <ul>
+              <li>Possíveis efeitos sobre fertilidade, gestação, embrião, feto, lactação e recém nascido.</li>
+              <li>Exposição de gestantes a substâncias ou procedimentos não indicados.</li>
+            </ul>
+
+            <h3>4.10. Riscos científicos e epistemológicos</h3>
+            <ul>
+              <li>Metodologias frágeis que expõem participantes sem gerar conhecimento relevante.</li>
+              <li>Coleta de dados além do necessário para responder aos objetivos.</li>
+              <li>Uso de placebo sem justificativa ética em contextos onde já existem tratamentos eficazes.</li>
+            </ul>
+          </section>
+
+          <!-- 5. Manejo ético dos riscos -->
+          <section id="manejo-riscos">
+            <span class="pill">5. Manejo ético dos riscos</span>
+            <h2>5. Manejo ético dos riscos</h2>
+            <p>
+              O manejo ético dos riscos é um processo contínuo que acompanha todas as fases da pesquisa, planejamento, execução, análise e devolutiva dos resultados. Ele articula quatro eixos principais, identificação, prevenção, monitoramento e mitigação.
+            </p>
+
+            <h3>5.1. Identificação dos riscos</h3>
+            <p>
+              A identificação é o ponto de partida. O pesquisador deve mapear, procedimento por procedimento, quais danos podem ocorrer, em que etapa e com que tipo de participante. Isso inclui riscos imediatos, por exemplo, dor em coleta de sangue, e riscos tardios ou indiretos, por exemplo, exposição de dados em publicações futuras. É essencial considerar fatores de vulnerabilidade, idade, condições de saúde, contexto social e cultural.
+            </p>
+
+            <h3>5.2. Prevenção dos riscos</h3>
+            <p>
+              Prevenir significa reduzir a probabilidade de que o dano aconteça. Entre as estratégias de prevenção estão:
+            </p>
+            <ul>
+              <li>Escolher métodos que utilizem o menor risco possível para atingir os objetivos.</li>
+              <li>Treinar a equipe para conduzir coletas com cuidado técnico e sensibilidade ética.</li>
+              <li>Definir critérios claros de inclusão e exclusão de participantes.</li>
+              <li>Testar instrumentos e procedimentos em etapas preliminares, quando cabível.</li>
+              <li>Planejar ambientes adequados para entrevistas, exames e intervenções.</li>
+            </ul>
+
+            <h3>5.3. Monitoramento dos riscos</h3>
+            <p>
+              Monitorar é acompanhar o que acontece durante a pesquisa, para detectar precocemente qualquer sinal de dano ou desconforto. Isso pode incluir:
+            </p>
+            <ul>
+              <li>Registro sistemático de eventos adversos e intercorrências.</li>
+              <li>Reuniões periódicas da equipe para discutir casos e ajustar procedimentos.</li>
+              <li>Canais claros de comunicação para que participantes relatem problemas, telefones, e mails.</li>
+              <li>Em estudos clínicos, comitês independentes de monitoramento, quando necessário.</li>
+            </ul>
+
+            <h3>5.4. Mitigação e resposta</h3>
+            <p>
+              A mitigação envolve ações reativas, aplicadas quando o risco se concretiza ou quando há indícios de dano. As normas brasileiras exigem assistência imediata, integral e gratuita em caso de danos relacionados à pesquisa. Isso pode significar:
+            </p>
+            <ul>
+              <li>Atendimento clínico de urgência, medicação, acompanhamento.</li>
+              <li>Encaminhamento para suporte psicológico ou social.</li>
+              <li>Revisão do protocolo, com alteração de procedimentos ou interrupção de uma etapa.</li>
+              <li>Indenização por danos materiais e imateriais, quando for o caso.</li>
+            </ul>
+
+            <h3>5.5. Plano de gestão de segurança</h3>
+            <p>
+              O plano de gestão de segurança reúne, em um único documento, a estratégia para lidar com riscos. Ele deve:
+            </p>
+            <ul>
+              <li>Mapear riscos por etapa da pesquisa.</li>
+              <li>Definir responsabilidades dentro da equipe.</li>
+              <li>Estabelecer fluxos de atendimento em emergências.</li>
+              <li>Descrever mecanismos de proteção de dados e confidencialidade.</li>
+              <li>Explicitar critérios para suspender ou encerrar a pesquisa se os riscos aumentarem.</li>
+            </ul>
+
+            <h3>5.6. Papel do TCLE no manejo dos riscos</h3>
+            <p>
+              O Termo de Consentimento Livre e Esclarecido é o instrumento central para comunicar ao participante quais riscos existem e como serão manejados. O TCLE deve informar:
+            </p>
+            <ul>
+              <li>Quais desconfortos e danos podem ocorrer.</li>
+              <li>Quais medidas de prevenção serão adotadas.</li>
+              <li>Que tipo de assistência será oferecida e por quanto tempo.</li>
+              <li>Como funcionam ressarcimento e indenização.</li>
+              <li>Com quem o participante pode falar em caso de dúvidas ou problemas, pesquisador, CEP.</li>
+            </ul>
+          </section>
+
+          <!-- 6. Benefícios da pesquisa -->
+          <section id="beneficios">
+            <span class="pill">6. Benefícios da pesquisa</span>
+            <h2>6. Benefícios da pesquisa</h2>
+
+            <h3>6.1. Benefícios diretos</h3>
+            <ul>
+              <li>Acesso a exames, monitorização de saúde ou intervenções que o participante não teria na rotina.</li>
+              <li>Acompanhamento clínico ou psicológico adicional, quando previsto.</li>
+              <li>Possível melhora de sintomas, quando a intervenção tem plausibilidade terapêutica.</li>
+              <li>Orientações em saúde, educação ou direitos que valorizem o participante.</li>
+            </ul>
+
+            <h3>6.2. Benefícios indiretos</h3>
+            <ul>
+              <li>Produção de conhecimento relevante para políticas públicas.</li>
+              <li>Melhoria de práticas assistenciais e educacionais.</li>
+              <li>Formação e capacitação de profissionais e serviços envolvidos na pesquisa.</li>
+              <li>Fortalecimento de comunidades por meio de devolutivas e diálogo com os resultados.</li>
+            </ul>
+
+            <p>
+              A descrição dos benefícios não deve incluir vantagens pessoais para o pesquisador, nem prometer ganhos que extrapolam o que o estudo pode realisticamente oferecer. O foco é sempre o bem estar dos participantes e da sociedade.
+            </p>
+          </section>
+
+          <!-- 7. Checklist para projetos -->
+          <section id="checklist">
+            <span class="pill">7. Checklist para projetos</span>
+            <h2>7. Checklist para projetos</h2>
+
+            <h3>7.1. Checklist de riscos</h3>
+            <ul class="checklist">
+              <li>Todos os tipos de risco foram identificados, físicos, psicológicos, sociais, informacionais, morais, operacionais.</li>
+              <li>Nenhum trecho afirma que a pesquisa não tem riscos.</li>
+              <li>Cada risco está acompanhado de uma medida clara de mitigação.</li>
+              <li>Há previsão de assistência imediata e integral, sem custos ao participante.</li>
+              <li>Há descrição de ressarcimento de despesas e possibilidade de indenização.</li>
+              <li>Existe um plano de confidencialidade, anonimização e segurança de dados.</li>
+              <li>Relações hierárquicas foram consideradas, com estratégias para evitar pressão ou coerção.</li>
+              <li>O direito de recusa e desistência foi explicitamente garantido.</li>
+            </ul>
+
+            <h3>7.2. Checklist de benefícios</h3>
+            <ul class="checklist">
+              <li>Benefícios diretos e indiretos estão claramente diferenciados.</li>
+              <li>Os benefícios são plausíveis, proporcionais e coerentes com os objetivos da pesquisa.</li>
+              <li>Há explicitação da relevância social da pesquisa.</li>
+              <li>Está prevista devolutiva de resultados em linguagem acessível.</li>
+              <li>Quando aplicável, está previsto o acesso a produtos, métodos ou terapias eficazes resultantes da pesquisa.</li>
+            </ul>
+          </section>
+
+          <!-- 8. Lista agrupada de riscos -->
+          <section id="lista-riscos">
+            <span class="pill">8. Lista agrupada de riscos</span>
+            <h2>8. Lista agrupada de riscos possíveis</h2>
+            <p>
+              A lista abaixo resume, em grupos, os principais riscos que podem estar presentes em pesquisas com seres humanos.
+            </p>
+
+            <h3>8.1. Grupo físico clínico</h3>
+            <ul>
+              <li>Dor, hematomas, desconforto, reações adversas, acidentes com equipamentos, intercorrências em exames.</li>
+            </ul>
+
+            <h3>8.2. Grupo psicológico emocional</h3>
+            <ul>
+              <li>Ansiedade, vergonha, estresse, tristeza, reativação de traumas, queda de autoestima.</li>
+            </ul>
+
+            <h3>8.3. Grupo social simbólico</h3>
+            <ul>
+              <li>Estigmatização, rotulação, conflitos familiares e profissionais, julgamentos morais.</li>
+            </ul>
+
+            <h3>8.4. Grupo ético legal e hierárquico</h3>
+            <ul>
+              <li>Consentimento viciado por hierarquia, violação de direitos de crianças e adolescentes, uso de dados sem autorização adequada.</li>
+            </ul>
+
+            <h3>8.5. Grupo informacional digital</h3>
+            <ul>
+              <li>Vazamento de dados, exposição de imagens, gravações e documentos, rastreamento em ambientes virtuais sem proteção adequada.</li>
+            </ul>
+
+            <h3>8.6. Grupo cultural e moral</h3>
+            <ul>
+              <li>Desrespeito a crenças, tradições, saberes tradicionais, uso indevido de símbolos culturais.</li>
+            </ul>
+
+            <h3>8.7. Grupo operacional e logístico</h3>
+            <ul>
+              <li>Sobrecarga de participantes, falhas de comunicação, deslocamentos sem ressarcimento, cronograma inadequado.</li>
+            </ul>
+          </section>
+
+          <!-- 9. Privacidade, sigilo e confidencialidade -->
+          <section id="sigilo-priv-conf">
+            <span class="pill">9. Privacidade, sigilo e confidencialidade</span>
+            <h2>9. Privacidade, sigilo e confidencialidade</h2>
+            <p>
+              Em ética em pesquisa, privacidade, sigilo e confidencialidade são conceitos próximos, mas não idênticos. Entender suas diferenças ajuda a formular boas práticas e textos claros para o CEP e para os participantes.
+            </p>
+
+            <h3>9.1. Definições resumidas</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Conceito</th>
+                  <th>Foco principal</th>
+                  <th>Exemplo de risco</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Privacidade</strong></td>
+                  <td>Direito do participante de controlar o acesso à sua vida e às suas informações íntimas.</td>
+                  <td>Entrevista sobre tema sensível em sala compartilhada, onde outras pessoas escutam as respostas.</td>
+                </tr>
+                <tr>
+                  <td><strong>Sigilo</strong></td>
+                  <td>Dever ético do pesquisador e da equipe de não revelar informações que possam identificar participantes.</td>
+                  <td>Relato em aula ou reunião que permite reconhecer um participante ou instituição.</td>
+                </tr>
+                <tr>
+                  <td><strong>Confidencialidade</strong></td>
+                  <td>Conjunto de medidas técnicas e administrativas que protegem dados contra acessos indevidos.</td>
+                  <td>Vazamento de banco de dados por falta de senha ou criptografia adequada.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>9.2. Exemplos de medidas de proteção</h3>
+
+            <h4>Privacidade</h4>
+            <ul>
+              <li>Realizar entrevistas e atendimentos em ambiente reservado.</li>
+              <li>Coletar apenas informações estritamente necessárias para os objetivos do estudo.</li>
+              <li>Permitir que o participante opte por não responder perguntas que o deixem desconfortável.</li>
+            </ul>
+
+            <h4>Sigilo</h4>
+            <ul>
+              <li>Substituir nomes por códigos em todos os registros.</li>
+              <li>Evitar detalhes que permitam identificar alguém indiretamente, como cargo único ou local muito específico.</li>
+              <li>Firmar termos de compromisso de sigilo com toda a equipe.</li>
+            </ul>
+
+            <h4>Confidencialidade</h4>
+            <ul>
+              <li>Utilizar computadores e sistemas protegidos por senhas individuais.</li>
+              <li>Armazenar dados em servidores institucionais em vez de dispositivos pessoais desprotegidos.</li>
+              <li>Definir perfis de acesso e registrar quem acessa quais dados.</li>
+            </ul>
+
+            <h3>9.3. Exemplo de redação para TCLE</h3>
+            <p>
+              Exemplo adaptável:
+            </p>
+            <p>
+              Serão respeitados a privacidade, o sigilo e a confidencialidade dos participantes. As entrevistas acontecerão em local reservado. As informações coletadas serão codificadas e nenhum nome ou dado identificável será divulgado. Os registros digitais serão armazenados em sistemas protegidos por senha, acessíveis apenas à equipe de pesquisa, e serão destruídos de forma segura após o prazo regulamentar de guarda.
+            </p>
+          </section>
+
+          <!-- 10. Fluxograma informacional -->
+          <section id="fluxograma">
+            <span class="pill">10. Fluxograma informacional</span>
+            <h2>10. Fluxograma para identificar riscos informacionais</h2>
+            <p>
+              Roteiro em passos para revisar um protocolo quanto a privacidade, sigilo e confidencialidade.
+            </p>
+
+            <div class="fluxo-step">
+              <strong>Passo 1. Dados pessoais</strong><br />
+              A pesquisa coleta dados pessoais ou sensíveis, por exemplo, saúde, sexualidade, religião, opinião política, etnia, identidade de gênero.  
+              Se sim, considerar que existe risco informacional.
+            </div>
+
+            <div class="fluxo-step">
+              <strong>Passo 2. Ambiente de coleta</strong><br />
+              Onde a coleta acontece, sala reservada, ambiente virtual, espaço coletivo.  
+              Se houver possibilidade de terceiros ouvirem ou verem o participante, classificar como risco de privacidade e ajustar o ambiente.
+            </div>
+
+            <div class="fluxo-step">
+              <strong>Passo 3. Conteúdo das respostas</strong><br />
+              As respostas podem expor o participante ou permitir identificá lo.  
+              Se sim, prever estratégias de sigilo e anonimização na análise e na publicação.
+            </div>
+
+            <div class="fluxo-step">
+              <strong>Passo 4. Armazenamento e trânsito dos dados</strong><br />
+              Os dados serão digitalizados, enviados por e mail ou armazenados em nuvem.  
+              Se houver qualquer formato digital, considerar risco de confidencialidade e adotar senhas, criptografia e controle de acesso.
+            </div>
+
+            <div class="fluxo-step">
+              <strong>Passo 5. Acesso interno</strong><br />
+              Definir quem pode ver os dados brutos.  
+              Se toda a equipe tem acesso sem necessidade, delimitar papéis e níveis de permissão.
+            </div>
+
+            <div class="fluxo-step">
+              <strong>Passo 6. Publicações e devolutivas</strong><br />
+              Verificar se relatórios, artigos e devolutivas não contêm citações ou descrições que revelem identidades individuais ou de pequenos grupos facilmente reconhecíveis.
+            </div>
+
+            <div class="fluxo-step">
+              <strong>Passo 7. Registro no protocolo e no TCLE</strong><br />
+              Garantir que todos os riscos informacionais e as respectivas medidas de proteção estejam descritos na seção de riscos do projeto e no TCLE.
+            </div>
+          </section>
+
+          <!-- 11. Considerações finais -->
+          <section id="consideracoes">
+            <span class="pill">11. Considerações finais</span>
+            <h2>11. Considerações finais</h2>
+            <p>
+              A descrição adequada dos riscos e benefícios é mais do que um requisito técnico, é uma expressão do compromisso ético e humanista do pesquisador. Essa seção revela o equilíbrio entre o avanço científico e a proteção da dignidade humana, refletindo o cumprimento do princípio da responsabilidade social da ciência.
+            </p>
+            <p>
+              Ao apresentar riscos e benefícios de maneira clara, fundamentada e proporcional, o pesquisador fortalece a credibilidade de seu projeto, facilita a aprovação ética e contribui para uma cultura de pesquisa responsável e transparente.
+            </p>
+            <p>
+              A compreensão e aplicação rigorosa desses conceitos são, portanto, indispensáveis para qualquer investigação que se pretenda eticamente legítima e socialmente relevante.
+            </p>
+          </section>
+
+          <!-- 12. GPT Personalizado -->
+          <section id="gpt-personalizado">
+            <span class="pill">12. GPT Personalizado</span>
+            <h2>12. GPT Personalizado</h2>
+            <p>
+              Além das orientações conceituais e dos modelos de texto apresentados neste ebook, os pesquisadores podem contar com o apoio de uma ferramenta gratuita de inteligência artificial, o GPT personalizado voltado para riscos e benefícios em pesquisa clínica, disponível em
+              <a href="https://bit.ly/rb-geral" target="_blank" rel="noopener noreferrer">https://bit.ly/rb-geral</a>.
+            </p>
+            <p>
+              Esse recurso foi pensado para auxiliar na identificação sistemática de riscos físicos, psicológicos, sociais, informacionais e operacionais, bem como na redação estruturada de seções de riscos e benefícios em projetos de pesquisa, relatórios para o Sistema CEP e Conep e termos de consentimento livre e esclarecido.
+            </p>
+            <p>
+              O GPT personalizado pode, por exemplo, ajudar o pesquisador a:
+            </p>
+            <ul>
+              <li>Listar riscos potenciais associados a um protocolo de pesquisa clínica ou observacional.</li>
+              <li>Sugerir medidas de mitigação compatíveis com as normas éticas brasileiras.</li>
+              <li>Diferenciar claramente benefícios diretos e indiretos para participantes e sociedade.</li>
+              <li>Adaptar a linguagem técnica para versões dirigidas a comitês de ética e para versões em linguagem acessível para o TCLE.</li>
+            </ul>
+            <p>
+              A ferramenta não substitui a responsabilidade ética do pesquisador, nem a avaliação do Comitê de Ética em Pesquisa, mas funciona como um apoio prático para qualificar a escrita, reduzir pendências e fortalecer a aderência às resoluções vigentes. Recomenda se sempre evitar o envio de dados pessoais ou identificáveis de participantes, mantendo a descrição dos protocolos em formato anonimizado.
+            </p>
+
+            <footer>
+              
+            </footer>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div class="site-footer">
+      <span>Ebook de apoio à redação de riscos e benefícios em pesquisas com seres humanos, uso acadêmico e regulatório.<br>
+Disciplina de Pesquisa em Ciências da Saúde, UNCISAL, 2025</span>
+      <span>Elaboração e curadoria de conteúdo, Aldemar Araujo e equipe de pesquisa</span>
+      <span>Uso educacional, não comercial, recomenda se citação da fonte ao utilizar trechos deste material</span>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const btn = document.getElementById("themeToggle");
+      const label = document.getElementById("themeToggleLabel");
+      const emoji = btn.querySelector(".theme-toggle-emoji");
+
+      function applyTheme(theme) {
+        body.setAttribute("data-theme", theme);
+        if (theme === "dark") {
+          label.textContent = "Modo claro";
+          emoji.textContent = "🌞";
+        } else {
+          label.textContent = "Modo escuro";
+          emoji.textContent = "🌙";
+        }
+      }
+
+      const stored = localStorage.getItem("ebook-theme");
+      if (stored === "light" || stored === "dark") {
+        applyTheme(stored);
+      } else {
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        applyTheme(prefersDark ? "dark" : "light");
+      }
+
+      btn.addEventListener("click", function () {
+        const current = body.getAttribute("data-theme") === "dark" ? "dark" : "light";
+        const next = current === "dark" ? "light" : "dark";
+        applyTheme(next);
+        localStorage.setItem("ebook-theme", next);
+      });
+    })();
+  </script>
+</body>
+</html>
