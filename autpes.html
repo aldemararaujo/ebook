@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Autorização para Realizar a Pesquisa | FiatLux</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Capítulo do FiatLux sobre autorização institucional para realizar pesquisas, abordando permissões da instituição, dos setores e das equipes envolvidas, com foco em viabilidade e segurança operacional." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-page: #f4f5f7;
+      --bg-card: #ffffff;
+      --bg-soft: #f9fafb;
+      --text-main: #1f2933;
+      --text-soft: #52606d;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.12);
+      --border-soft: #e5e7eb;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
+    }
+
+    body.dark-mode {
+      --bg-page: #020617;
+      --bg-card: #020617;
+      --bg-soft: #020617;
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.2);
+      --border-soft: #1f2937;
+      --shadow-soft: 0 20px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 12px 40px 12px;
+      font-family: "Lato", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #dbeafe, #f4f5f7);
+      color: var(--text-main);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark-mode {
+      background: radial-gradient(circle at top left, #020617, #020617);
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .shell {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 24px;
+      padding: 10px;
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(16px);
+    }
+
+    body.dark-mode .shell {
+      background: rgba(15, 23, 42, 0.8);
+      box-shadow: 0 0 0 1px rgba(31, 41, 55, 0.9);
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+      padding: 26px 26px 30px 26px;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding: 40px 16px 60px 16px;
+      }
+      .card {
+        padding: 32px 36px 40px 36px;
+      }
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #dbeafe, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-family: "Oswald", system-ui, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 18px;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.45);
+    }
+
+    body.dark-mode .brand-logo {
+      background: radial-gradient(circle at 20% 20%, #0f172a, #1d4ed8);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-soft);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-soft);
+      cursor: pointer;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(148, 163, 184, 0.35);
+      transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    }
+
+    body.dark-mode .theme-toggle {
+      background: #020617;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .theme-toggle span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+    }
+
+    .theme-toggle:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.3);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 26px;
+      line-height: 1.15;
+      margin: 0 0 12px 0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 30px;
+      }
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 16px;
+    }
+
+    .meta strong {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .toc {
+      margin: 16px 0 24px 0;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--bg-soft);
+      border: 1px dashed var(--border-soft);
+    }
+
+    .toc-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .toc ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .toc li {
+      margin: 3px 0;
+    }
+
+    .toc a {
+      color: var(--text-main);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(148, 163, 184, 0.9);
+    }
+
+    .toc a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    h2 {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 19px;
+      margin: 24px 0 8px 0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin: 18px 0 6px 0;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 6px 0 8px 0;
+      color: var(--text-main);
+    }
+
+    ul, ol {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-main);
+      padding-left: 20px;
+      margin: 4px 0 8px 0;
+    }
+
+    li + li {
+      margin-top: 2px;
+    }
+
+    .footer {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-soft);
+      font-size: 12px;
+      color: var(--text-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <div class="card">
+        <header class="header">
+          <div class="brand">
+            <div class="brand-logo">FX</div>
+            <div class="brand-text">
+              <div class="brand-title">FiatLux, Pesquisa</div>
+              <div class="brand-subtitle">Autorização institucional</div>
+            </div>
+          </div>
+          <button id="themeToggle" class="theme-toggle" type="button">
+            <span>Modo escuro</span>
+          </button>
+        </header>
+
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span>Capítulo FiatLux</span>
+        </div>
+
+        <h1>Autorização para Realizar a Pesquisa</h1>
+
+        <div class="meta">
+          <strong>Contexto</strong>, este capítulo explica a necessidade de autorizações institucionais em diferentes níveis, mostrando como elas garantem viabilidade, segurança operacional e continuidade da pesquisa em ambientes reais.
+        </div>
+
+        <section class="toc">
+          <div class="toc-title">Estrutura deste capítulo</div>
+          <ul>
+            <li><a href="#sec-intro">Introdução</a></li>
+            <li><a href="#sec-1">1. Duas ou até três autorizações podem ser necessárias</a></li>
+            <li><a href="#sec-2">2. Todos os envolvidos direta ou indiretamente precisam ter ciência da pesquisa</a></li>
+            <li><a href="#sec-3">3. A necessidade de contato prévio com a instituição</a></li>
+            <li><a href="#sec-4">4. O que apresentar ao solicitar autorização</a></li>
+            <li><a href="#sec-5">5. Função protetiva e regulatória das autorizações</a></li>
+            <li><a href="#sec-6">6. A autorização institucional é tão essencial quanto o TCLE</a></li>
+          </ul>
+        </section>
+
+        <main>
+          <section id="sec-intro">
+            <h2>Introdução</h2>
+            <p>
+              A autorização para realizar a pesquisa é um documento institucional que formaliza o direito do pesquisador de atuar dentro de uma organização específica. Ela garante permissão para coletar dados, acessar ambientes, interagir com participantes, utilizar prontuários ou aplicar instrumentos. Essa autorização não substitui a aprovação ética pelo Comitê de Ética em Pesquisa, mas complementa essa aprovação ao regular o acesso ao espaço físico, aos sistemas e às rotinas onde o estudo será conduzido.
+            </p>
+            <p>
+              É fundamental reconhecer que a proteção dos participantes ocorre em múltiplos níveis. O Comitê de Ética em Pesquisa avalia riscos éticos e metodológicos, mas quem garante a segurança operacional, a proteção dos dados institucionais e a viabilidade logística é a própria instituição onde o estudo será realizado. Por isso, todas as pesquisas que envolvem ambientes não públicos exigem alguma forma de autorização formal.
+            </p>
+            <p>
+              Ao compreender essas camadas de responsabilidade, o pesquisador passa a tratar a autorização não como mera burocracia, e sim como peça estratégica que assegura a continuidade e a legitimidade do estudo no mundo real.
+            </p>
+          </section>
+
+          <section id="sec-1">
+            <h2>1. Duas ou até três autorizações podem ser necessárias</h2>
+            <p>
+              Dependendo da complexidade do local e da estrutura organizacional, a pesquisa pode exigir mais de uma autorização formal. Em muitos cenários, são necessárias, pelo menos, duas autorizações e, em alguns casos, até três.
+            </p>
+            <ol>
+              <li>
+                <strong>Autorização da instituição.</strong>
+                Emitida pela direção geral, superintendência ou gabinete. É o documento que reconhece oficialmente a pesquisa dentro da instituição e assegura que ela está alinhada aos regulamentos internos, às políticas de segurança e às prioridades institucionais.
+              </li>
+              <li>
+                <strong>Autorização do setor, departamento ou serviço onde a pesquisa ocorrerá.</strong>
+                Nenhuma direção autoriza sozinha a rotina prática de um setor. A equipe local precisa concordar, porque é ela quem enfrenta o impacto real da coleta, o uso de espaços, o tempo destinado a entrevistas e a eventual reorganização de fluxos.
+              </li>
+              <li>
+                <strong>Autorização de equipes específicas, quando necessário.</strong>
+                Em alguns estudos, áreas como tecnologia da informação, arquivo médico, coordenação acadêmica, núcleo de segurança do paciente, gestão de dados ou ensino e pesquisa precisam validar seu envolvimento, especialmente quando haverá acesso a sistemas internos ou dados sensíveis.
+              </li>
+            </ol>
+            <p>
+              Saber antecipadamente quantas autorizações serão necessárias reduz atrasos, evita negativas inesperadas, protege o pesquisador de retrabalho e fortalece a governança do estudo. Nenhuma pesquisa avança com segurança sem essa base institucional sólida claramente estabelecida.
+            </p>
+          </section>
+
+          <section id="sec-2">
+            <h2>2. Todos os envolvidos direta ou indiretamente precisam ter ciência da pesquisa</h2>
+            <p>
+              Uma pesquisa que ocorre dentro de uma organização modifica fluxos, exige tempo de pessoas, ocupa espaços e pode afetar agendas. Por isso, além das autorizações formais, todos os envolvidos no processo, direta ou indiretamente, precisam estar informados de maneira adequada.
+            </p>
+            <p>
+              Entre esses envolvidos podemos citar.
+            </p>
+            <ul>
+              <li>chefias imediatas e coordenações de área;</li>
+              <li>equipes que apoiarão o recrutamento de participantes;</li>
+              <li>profissionais impactados pela rotina de coleta;</li>
+              <li>setores administrativos que liberarão acesso ou dados;</li>
+              <li>núcleos internos responsáveis por segurança, ensino ou pesquisa.</li>
+            </ul>
+            <p>
+              Essa conscientização prévia ajuda a evitar.
+            </p>
+            <ul>
+              <li>recusas de última hora por falta de informação;</li>
+              <li>dificuldades de acesso a ambientes e sistemas;</li>
+              <li>conflitos de agenda com atividades assistenciais ou acadêmicas;</li>
+              <li>sobrecarga inesperada para profissionais da linha de frente;</li>
+              <li>interrupções bruscas da coleta por falta de alinhamento interno.</li>
+            </ul>
+            <p>
+              Um ambiente informado e alinhado evita rupturas operacionais e garante que a pesquisa flua com mais segurança. Pesquisas bem comunicadas são pesquisas que têm maior chance de serem concluídas com êxito e de manterem o apoio da instituição durante todo o processo.
+            </p>
+          </section>
+
+          <section id="sec-3">
+            <h2>3. A necessidade de contato prévio com a instituição</h2>
+            <p>
+              Antes de escrever o projeto completo, o pesquisador deve entrar em contato com a instituição e com o setor onde pretende realizar a pesquisa. Esse passo é decisivo, porque permite alinhar expectativas, conhecer restrições e ajustar o desenho do estudo ao cenário real em que ele será executado.
+            </p>
+            <p>
+              Esse contato inicial ajuda o pesquisador a.
+            </p>
+            <ul>
+              <li>descobrir quais documentos são exigidos para autorizar pesquisas;</li>
+              <li>entender as regras internas que nem sempre estão publicadas em regulamentos;</li>
+              <li>identificar restrições de espaço físico, horários ou recursos humanos;</li>
+              <li>explicar a intenção da pesquisa em linguagem clara, objetiva e respeitosa;</li>
+              <li>ajustar o cronograma e o volume de coleta ao ritmo do serviço.</li>
+            </ul>
+            <p>
+              Muitas vezes essa conversa revela, de forma antecipada, limitações importantes, como indisponibilidade de pessoal para apoiar o estudo, incompatibilidades de agenda com períodos críticos de trabalho ou exigências específicas de proteção de dados.
+            </p>
+            <p>
+              Esse contato precoce evita que o pesquisador invista semanas escrevendo um projeto que depois não será autorizado pela instituição. Em termos práticos, o planejamento estratégico da pesquisa começa quando o pesquisador dialoga com o local onde o estudo será realizado e ouve, com atenção, as condições para que a pesquisa aconteça.
+            </p>
+          </section>
+
+          <section id="sec-4">
+            <h2>4. O que apresentar ao solicitar autorização</h2>
+            <p>
+              A instituição precisa de informações claras, concisas e relevantes para avaliar a pesquisa. A qualidade desse material influencia diretamente a decisão de apoiar ou não o estudo e o grau de confiança depositado na equipe de pesquisa.
+            </p>
+            <p>
+              Entre os itens que costumam ser necessários, destacam se.
+            </p>
+            <ul>
+              <li>título da pesquisa;</li>
+              <li>propósito central e justificativa resumida;</li>
+              <li>público envolvido e critérios gerais de participação;</li>
+              <li>descrição objetiva dos procedimentos que serão realizados no local;</li>
+              <li>tempo previsto de execução e duração media por participante;</li>
+              <li>impacto esperado na rotina de trabalho e nos fluxos assistenciais ou acadêmicos;</li>
+              <li>instrumentos ou formulários que serão aplicados no cenário;</li>
+              <li>medidas de segurança, sigilo e proteção de dados;</li>
+              <li>responsabilidades do pesquisador e da instituição.</li>
+            </ul>
+            <p>
+              Quanto mais clara, organizada e objetiva for a apresentação dessas informações, maior a chance de a instituição apoiar o estudo de forma espontânea e colaborativa. Projetos apresentados com rigor e transparência tendem a receber respostas mais rápidas, apoio mais consistente e menor resistência operacional ao longo da coleta.
+            </p>
+          </section>
+
+          <section id="sec-5">
+            <h2>5. Função protetiva e regulatória das autorizações</h2>
+            <p>
+              A autorização institucional funciona como um mecanismo de proteção e regulação que atua em múltiplas direções. Ela não serve apenas para registrar um consentimento formal, mas para estruturar de maneira segura a relação entre pesquisa, participantes e instituição.
+            </p>
+            <p>
+              Entre as principais funções, podemos destacar.
+            </p>
+            <ol>
+              <li>
+                <strong>Proteção dos participantes.</strong>
+                Garante que o ambiente é adequado, seguro e compatível com os cuidados que a pesquisa exige.
+              </li>
+              <li>
+                <strong>Proteção da instituição.</strong>
+                Assegura que a pesquisa não violará rotinas, fluxos internos ou dados sigilosos, nem colocará a organização em risco jurídico ou de imagem.
+              </li>
+              <li>
+                <strong>Proteção do pesquisador.</strong>
+                Oferece respaldo formal para a presença do pesquisador nos ambientes da instituição, evitando conflitos, objeções individuais e interrupções arbitrárias.
+              </li>
+              <li>
+                <strong>Proteção do projeto.</strong>
+                Contribui para que o estudo tenha estabilidade, previsibilidade e segurança jurídica ao longo de toda a coleta.
+              </li>
+            </ol>
+            <p>
+              Além disso, a autorização confirma que a pesquisa pode ocorrer naquele horário, que a equipe responsável está ciente, que a coleta não prejudicará o serviço e que os registros sensíveis serão protegidos conforme a legislação, incluindo a Lei Geral de Proteção de Dados Pessoais.
+            </p>
+            <p>
+              A autorização institucional não é apenas um documento, é parte da blindagem ética e operacional do estudo. Ela protege o pesquisador, os participantes e a própria instituição, garantindo continuidade mesmo diante de mudanças administrativas, de agenda ou de equipe.
+            </p>
+          </section>
+
+          <section id="sec-6">
+            <h2>6. A autorização institucional é tão essencial quanto o TCLE</h2>
+            <p>
+              O tripé operacional de uma pesquisa que envolve ambientes institucionais inclui, de maneira integrada.
+            </p>
+            <ol>
+              <li>Projeto de pesquisa, estruturado e coerente.</li>
+              <li>Aprovação ética do Comitê de Ética em Pesquisa.</li>
+              <li>Autorização institucional para realização do estudo no local.</li>
+            </ol>
+            <p>
+              A pesquisa presencial ou documental simplesmente não existe, na prática, sem autorização do local. Mesmo com aprovação ética, a instituição pode indeferir o acesso por motivos operacionais, legais, de segurança ou de incompatibilidade com suas prioridades internas.
+            </p>
+            <p>
+              Em termos concretos, isso significa que.
+            </p>
+            <ul>
+              <li>sem autorização não há coleta;</li>
+              <li>sem coleta não há dados;</li>
+              <li>sem dados não há análise;</li>
+              <li>sem análise não há pesquisa concluída.</li>
+            </ul>
+            <p>
+              A autorização institucional é o eixo que conecta o plano teórico à execução real. Ela é decisiva para que a pesquisa permaneça viável, sustentável e alinhada às normas de proteção, responsabilidade e respeito aos participantes e à instituição que acolhe o estudo.
+            </p>
+          </section>
+        </main>
+
+        <footer class="footer">
+          <div>
+            Capítulo integrante do Ebook FiatLux, pesquisa em ciências da saúde, versão educativa para estudantes e pesquisadores iniciantes.
+          </div>
+          <div>
+            Conteúdo em desenvolvimento contínuo, licença Creative Commons, atribuição, uso não comercial, compartilhamento pela mesma licença.
+          </div>
+          <div>
+            Autor, Aldemar Araujo Castro.
+          </div>
+        </footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const toggleBtn = document.getElementById("themeToggle");
+
+      function applyTheme(theme) {
+        if (theme === "dark") {
+          body.classList.add("dark-mode");
+          toggleBtn.querySelector("span").textContent = "Modo claro";
+        } else {
+          body.classList.remove("dark-mode");
+          toggleBtn.querySelector("span").textContent = "Modo escuro";
+        }
+      }
+
+      const storedTheme = localStorage.getItem("fiatlux-theme");
+      if (storedTheme === "dark" || storedTheme === "light") {
+        applyTheme(storedTheme);
+      } else {
+        applyTheme("light");
+      }
+
+      toggleBtn.addEventListener("click", function () {
+        const isDark = body.classList.contains("dark-mode");
+        const newTheme = isDark ? "light" : "dark";
+        applyTheme(newTheme);
+        localStorage.setItem("fiatlux-theme", newTheme);
+      });
+    })();
+  </script>
+  </div>
+<footer style="text-align: center; font-size: small;">
+    © 2025 Aldemar Araujo Castro<br> Licença CC BY-NC-SA 4.0
+</footer>
+</div>
+</body>
+</html>
