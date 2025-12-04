@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>O Plano de Intenção como Ferramenta Estratégica | FiatLux</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Capítulo do FiatLux explicando o Plano de Intenção como ferramenta estratégica, início do teste de instrumentos e procedimentos e base para o resumo estruturado do projeto de pesquisa." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-page: #f4f5f7;
+      --bg-card: #ffffff;
+      --bg-soft: #f9fafb;
+      --text-main: #1f2933;
+      --text-soft: #52606d;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.12);
+      --border-soft: #e5e7eb;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
+    }
+
+    body.dark-mode {
+      --bg-page: #020617;
+      --bg-card: #020617;
+      --bg-soft: #020617;
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.2);
+      --border-soft: #1f2937;
+      --shadow-soft: 0 20px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 12px 40px 12px;
+      font-family: "Lato", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #dbeafe, #f4f5f7);
+      color: var(--text-main);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark-mode {
+      background: radial-gradient(circle at top left, #020617, #020617);
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .shell {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 24px;
+      padding: 10px;
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(16px);
+    }
+
+    body.dark-mode .shell {
+      background: rgba(15, 23, 42, 0.8);
+      box-shadow: 0 0 0 1px rgba(31, 41, 55, 0.9);
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+      padding: 26px 26px 30px 26px;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding: 40px 16px 60px 16px;
+      }
+      .card {
+        padding: 32px 36px 40px 36px;
+      }
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #dbeafe, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-family: "Oswald", system-ui, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 18px;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.45);
+    }
+
+    body.dark-mode .brand-logo {
+      background: radial-gradient(circle at 20% 20%, #0f172a, #1d4ed8);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-soft);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-soft);
+      cursor: pointer;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(148, 163, 184, 0.35);
+      transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    }
+
+    body.dark-mode .theme-toggle {
+      background: #020617;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .theme-toggle span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+    }
+
+    .theme-toggle:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.3);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 26px;
+      line-height: 1.15;
+      margin: 0 0 12px 0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 30px;
+      }
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 16px;
+    }
+
+    .meta strong {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .toc {
+      margin: 16px 0 24px 0;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--bg-soft);
+      border: 1px dashed var(--border-soft);
+    }
+
+    .toc-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .toc ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .toc li {
+      margin: 3px 0;
+    }
+
+    .toc a {
+      color: var(--text-main);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(148, 163, 184, 0.9);
+    }
+
+    .toc a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    h2 {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 19px;
+      margin: 24px 0 8px 0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin: 18px 0 6px 0;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 6px 0 8px 0;
+      color: var(--text-main);
+    }
+
+    ul, ol {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-main);
+      padding-left: 20px;
+      margin: 4px 0 8px 0;
+    }
+
+    li + li {
+      margin-top: 2px;
+    }
+
+    .footer {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-soft);
+      font-size: 12px;
+      color: var(--text-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <div class="card">
+        <header class="header">
+          <div class="brand">
+            <div class="brand-logo">FX</div>
+            <div class="brand-text">
+              <div class="brand-title">FiatLux, Pesquisa</div>
+              <div class="brand-subtitle">Plano de intenção</div>
+            </div>
+          </div>
+          <button id="themeToggle" class="theme-toggle" type="button">
+            <span>Modo escuro</span>
+          </button>
+        </header>
+
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span>Capítulo FiatLux</span>
+        </div>
+
+        <h1>O Plano de Intenção como Ferramenta Estratégica</h1>
+
+        <div class="meta">
+          <strong>Contexto</strong>, este capítulo apresenta o Plano de Intenção como ponto de partida formal da pesquisa, início do Teste de Instrumentos e Procedimentos e base do resumo estruturado do projeto de pesquisa.
+        </div>
+
+        <section class="toc">
+          <div class="toc-title">Estrutura deste capítulo</div>
+          <ul>
+            <li><a href="#sec-1">1. O que é o Plano de Intenção</a></li>
+            <li><a href="#sec-2">2. O Plano de Intenção como início do Teste de Instrumentos e Procedimentos</a></li>
+            <li><a href="#sec-3">3. Validação pela revisão da literatura</a></li>
+            <li><a href="#sec-4">4. Mapeamento estratégico, o que faço sozinho e onde preciso de ajuda</a></li>
+            <li><a href="#sec-5">5. Aplicação do mapeamento em cada item do Plano de Intenção</a></li>
+            <li><a href="#sec-6">6. Relação com o Teste de Instrumentos e Procedimentos</a></li>
+            <li><a href="#sec-7">7. Considerações finais</a></li>
+          </ul>
+        </section>
+
+        <main>
+          <section id="sec-1">
+            <h2>1. O que é o Plano de Intenção</h2>
+            <p>
+              O Plano de Intenção é o primeiro produto intelectual da pesquisa. Ele transforma uma ideia inicial em uma proposta estruturada, testável e comunicável. Apesar de conciso, é um documento decisivo porque inaugura uma etapa crítica do ciclo científico conhecida como Teste de Instrumentos e Procedimentos.
+            </p>
+            <p>
+              Mais do que um resumo do futuro projeto, o Plano de Intenção funciona como uma matriz de raciocínio. Ele delimita o problema, apresenta a hipótese, define os objetivos e descreve, ainda que de forma preliminar, os procedimentos, os instrumentos, os participantes e os desfechos. O valor do Plano de Intenção está tanto no que ele registra quanto no que ele obriga o pesquisador a pensar antes de começar.
+            </p>
+            <p>
+              Em termos práticos, o Plano de Intenção é também a primeira versão do resumo estruturado do projeto de pesquisa. Nele já aparecem, em miniatura, os blocos que depois serão expandidos no projeto completo, no TCLE e nos demais documentos.
+            </p>
+          </section>
+
+          <section id="sec-2">
+            <h2>2. O Plano de Intenção como início do Teste de Instrumentos e Procedimentos</h2>
+            <p>
+              O Teste de Instrumentos e Procedimentos não começa com planilhas, pilotos ou entrevistas. Ele começa com o Plano de Intenção. Ao redigir esse documento, o pesquisador realiza o primeiro teste fundamental, avaliar se a pesquisa é possível, lógica, coerente e proporcional ao seu tempo e aos seus recursos.
+            </p>
+            <p>
+              Ao escrever o Plano de Intenção, o pesquisador já está:
+            </p>
+            <ul>
+              <li>testando a clareza da pergunta de pesquisa;</li>
+              <li>testando a coerência entre problema, hipótese e objetivos;</li>
+              <li>testando a adequação do tipo de estudo ao problema proposto;</li>
+              <li>testando a capacidade de execução das etapas planejadas;</li>
+              <li>testando a necessidade de apoio externo e de parcerias;</li>
+              <li>testando os riscos e a carga de trabalho prevista;</li>
+              <li>testando se os dados desejados são coletáveis e analisáveis;</li>
+              <li>testando se a ideia é relevante e justificável à luz da ética e da ciência.</li>
+            </ul>
+            <p>
+              Esse teste conceitual é o primeiro filtro de qualidade da pesquisa. Ele antecede o pré-teste dos instrumentos e protege o pesquisador de seguir adiante com um estudo inviável ou mal estruturado. Sem essa etapa, o risco de retrabalho e de frustração aumenta de forma importante.
+            </p>
+          </section>
+
+          <section id="sec-3">
+            <h2>3. Validação pela revisão da literatura</h2>
+            <p>
+              Depois de elaborado, o Plano de Intenção deve ser confrontado com a revisão da literatura. Essa validação funciona como um espelho crítico para conferir se a pergunta de pesquisa é relevante, se a lacuna científica existe, se a hipótese é plausível e se existe método adequado descrito em estudos anteriores.
+            </p>
+            <p>
+              A literatura ajuda a responder perguntas essenciais.
+            </p>
+            <ul>
+              <li>O tema já foi estudado em excesso ou ainda há espaço para novas perguntas.</li>
+              <li>A hipótese está alinhada ao que já se sabe ou ignora evidências fortes.</li>
+              <li>As variáveis que desejo medir são realmente mensuráveis.</li>
+              <li>Os participantes planejados são compatíveis com o que a literatura recomenda.</li>
+              <li>Os instrumentos necessários existem, precisam ser adaptados ou terão de ser criados.</li>
+              <li>O desfecho escolhido é relevante e aplicável ao contexto local.</li>
+            </ul>
+            <p>
+              A revisão da literatura, portanto, é o primeiro grande teste de plausibilidade científica do Plano de Intenção. Ela ajusta, confirma ou reformula o plano antes que ele se transforme em projeto completo. Ignorar essa etapa significa correr o risco de investir tempo e energia em uma pesquisa irrelevante, repetitiva ou metodologicamente frágil.
+            </p>
+          </section>
+
+          <section id="sec-4">
+            <h2>4. Mapeamento estratégico, o que faço sozinho e onde preciso de ajuda</h2>
+            <p>
+              Depois de validar o Plano de Intenção com a literatura, o pesquisador deve realizar o mapeamento estratégico das capacidades e necessidades. Essa etapa é central no Teste de Instrumentos e Procedimentos, porque revela, ponto a ponto, o que é possível fazer com os recursos disponíveis e o que depende de apoio externo.
+            </p>
+            <p>
+              Para cada item do Plano de Intenção, o pesquisador deve responder a três perguntas estratégicas.
+            </p>
+            <ul>
+              <li>
+                Consigo executar esta etapa sozinho, por exemplo, redigir objetivos, estruturar a tabela de dados, elaborar a versão inicial do formulário.
+              </li>
+              <li>
+                Vou precisar de ajuda para realizar esta etapa, por exemplo, cálculo do tamanho da amostra, métodos estatísticos avançados, validação de instrumentos, autorização institucional ou uso de softwares específicos.
+              </li>
+              <li>
+                Qual é a prioridade deste item para o sucesso da pesquisa, isto é, o que precisa ser resolvido imediatamente e o que pode ser ajustado ao longo do caminho.
+              </li>
+            </ul>
+            <p>
+              Esse mapeamento não é um detalhe administrativo. Ele é o mecanismo central que define a viabilidade operacional da pesquisa. A viabilidade científica diz que a pesquisa faz sentido do ponto de vista teórico. A viabilidade operacional diz se é possível executá-la nas condições reais do pesquisador.
+            </p>
+            <p>
+              O Plano de Intenção, portanto, deve registrar de forma explícita, em cada item, o que o pesquisador assume como responsabilidade direta, onde ele prevê necessidade de apoio e qual a prioridade de resolução de cada ponto. Esse registro serve como mapa para organizar cronogramas, parcerias e decisões futuras.
+            </p>
+          </section>
+
+          <section id="sec-5">
+            <h2>5. Aplicação do mapeamento em cada item do Plano de Intenção</h2>
+            <p>
+              A seguir, alguns exemplos de como esse mapeamento pode ser aplicado diretamente aos elementos do Plano de Intenção. Em cada item, o objetivo é indicar o que o pesquisador consegue fazer sozinho, onde precisará de ajuda e qual a prioridade para o sucesso da pesquisa.
+            </p>
+
+            <h3>5.1 Tipo de estudo</h3>
+            <p>
+              A escolha do tipo de estudo é uma decisão com efeito cascata. Ela influencia a forma de coleta dos dados, a estrutura da tabela de dados individuais, o tipo de análise estatística, a carga de trabalho e o nível de exigência ética.
+            </p>
+            <p>
+              O Plano de Intenção deve registrar se o pesquisador se sente seguro para definir o tipo de estudo ou se precisará de apoio metodológico. Deve indicar também a prioridade dessa decisão, que costuma ser alta, porque condiciona quase todas as etapas seguintes.
+            </p>
+
+            <h3>5.2 Participantes e viabilidade de acesso</h3>
+            <p>
+              Outra pergunta decisiva é, consigo acessar essas pessoas. Participantes não são abstrações, são indivíduos em contextos específicos, com rotinas, restrições e direitos. O Plano de Intenção deve descrever onde eles estão, como serão contatados, quem fará o convite e se haverá necessidade de autorização institucional.
+            </p>
+            <p>
+              Aqui o mapeamento estratégico aponta, por exemplo, se o pesquisador tem acesso direto ao serviço onde os participantes serão recrutados ou se dependerá de chefias, coordenações ou outros profissionais para viabilizar a abordagem. A prioridade também é alta, porque sem acesso real aos participantes a pesquisa se torna impraticável.
+            </p>
+
+            <h3>5.3 Instrumentos de coleta de dados</h3>
+            <p>
+              No Plano de Intenção o pesquisador deve indicar que tipo de instrumento pretende usar, por exemplo, questionário estruturado, formulário clínico, entrevista guiada ou escala validada. Deve apontar se esse instrumento já existe, se será adaptado ou se precisará ser construído do zero.
+            </p>
+            <p>
+              O mapeamento registra se o pesquisador consegue elaborar uma versão inicial sozinho, se precisará de apoio para validar o instrumento, se a aplicação será presencial ou online e qual é a prioridade de iniciar o pré-teste. Em geral, este é um dos primeiros itens que exigem ação prática, porque o Teste de Instrumentos e Procedimentos, em sentido restrito, começa quando a primeira versão do instrumento é pilotada.
+            </p>
+
+            <h3>5.4 Variáveis e tabela de dados individuais</h3>
+            <p>
+              Cada variável planejada no Plano de Intenção representa uma coluna futura na tabela de dados individuais. O documento deve indicar se essa variável é realmente necessária, se é mensurável, se tem unidade de medida definida e se exige codificação específica.
+            </p>
+            <p>
+              O mapeamento mostra se o pesquisador se sente capaz de estruturar a tabela matriz sozinho, utilizando o modelo padrão, e se precisará de apoio para definir variáveis derivadas, índices ou categorias compostas. A prioridade aqui é moderada em termos de tempo, mas alta em termos de qualidade, porque erros nesse ponto geram dificuldades na análise estatística e podem comprometer a interpretação dos resultados.
+            </p>
+
+            <h3>5.5 Métodos estatísticos</h3>
+            <p>
+              O Plano de Intenção não precisa trazer um plano estatístico completo, mas deve indicar com clareza a direção geral das análises pretendidas. Isso inclui se a hipótese será testada com comparações simples, associações, regressões ou modelos mais complexos.
+            </p>
+            <p>
+              O mapeamento identifica se o pesquisador domina o mínimo necessário para essas análises ou se precisará de consultoria estatística. Também verifica se os dados planejados são compatíveis com os métodos pretendidos. Muitas vezes esse item leva a ajustes em outros pontos, como tamanho da amostra, número de grupos ou escolhas de desfechos.
+            </p>
+
+            <h3>5.6 Aspectos éticos e operacionais</h3>
+            <p>
+              O Plano de Intenção deve antecipar os principais aspectos éticos envolvidos, como riscos, proteção de dados pessoais, necessidade de TCLE, autorização institucional e medidas de segurança durante e após a coleta.
+            </p>
+            <p>
+              O mapeamento registra se o pesquisador se sente capaz de redigir essas seções sozinho, com base em guias e modelos, ou se precisará de apoio institucional e orientação específica. A prioridade é alta, porque esses elementos retornarão em forma de exigências na submissão ao Comitê de Ética e na fase de Teste de Instrumentos e Procedimentos.
+            </p>
+          </section>
+
+          <section id="sec-6">
+            <h2>6. Relação com o Teste de Instrumentos e Procedimentos</h2>
+            <p>
+              Quando o Plano de Intenção está devidamente construído, validado pela literatura e acompanhado de um mapeamento explícito do que o pesquisador consegue fazer sozinho e do que exigirá apoio, ele se torna o ponto de partida formal do Teste de Instrumentos e Procedimentos.
+            </p>
+            <p>
+              A partir desse documento, o pesquisador consegue:
+            </p>
+            <ul>
+              <li>definir a ordem em que os instrumentos serão criados ou adaptados;</li>
+              <li>planejar o pré-teste do formulário de coleta de dados;</li>
+              <li>planejar o pré-teste da tabela de dados individuais, com alguns casos simulados;</li>
+              <li>simular a aplicação do TCLE em ambiente real ou virtual;</li>
+              <li>ajustar a logística de campo, como número de entrevistas por dia e tempo estimado por participante;</li>
+              <li>identificar pontos críticos que precisam ser corrigidos antes da submissão ao CEP.</li>
+            </ul>
+            <p>
+              Dessa forma, o Plano de Intenção funciona como elo entre a ideia inicial e os testes práticos dos instrumentos e dos procedimentos. Ele é, ao mesmo tempo, síntese conceitual e guia operacional da pesquisa.
+            </p>
+          </section>
+
+          <section id="sec-7">
+            <h2>7. Considerações finais</h2>
+            <p>
+              O Plano de Intenção é mais do que um documento preliminar. Ele é a principal ferramenta estratégica para transformar uma boa ideia em uma pesquisa viável, executável e eticamente responsável. Ao organizar o problema, os objetivos, os métodos e os recursos, ele inaugura o Teste de Instrumentos e Procedimentos e sustenta a construção do resumo estruturado do projeto de pesquisa.
+            </p>
+            <p>
+              Quando ampliado com o mapeamento do que o pesquisador consegue fazer sozinho, do que exige ajuda e da prioridade de cada item, o Plano de Intenção se torna um mapa de rota e um diagnóstico de viabilidade. Ele reduz retrabalho, diminui incertezas, orienta decisões e aproxima o pesquisador da conclusão bem sucedida do estudo.
+            </p>
+            <p>
+              Investir tempo nessa etapa não é um luxo, é uma necessidade. Pesquisas que começam com um Plano de Intenção claro, validado e estrategicamente mapeado têm muito mais chance de chegar ao fim com qualidade científica, coerência metodológica e respeito pleno aos participantes.
+            </p>
+          </section>
+        </main>
+
+        <footer class="footer">
+          <div>
+            Capítulo integrante do Ebook FiatLux, pesquisa em ciências da saúde, versão educativa para estudantes e pesquisadores iniciantes.
+          </div>
+          <div>
+            Conteúdo em desenvolvimento contínuo, licença Creative Commons, atribuição, uso não comercial, compartilhamento pela mesma licença.
+          </div>
+          <div>
+            Autor, Aldemar Araujo Castro.
+          </div>
+        </footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const toggleBtn = document.getElementById("themeToggle");
+
+      function applyTheme(theme) {
+        if (theme === "dark") {
+          body.classList.add("dark-mode");
+          toggleBtn.querySelector("span").textContent = "Modo claro";
+        } else {
+          body.classList.remove("dark-mode");
+          toggleBtn.querySelector("span").textContent = "Modo escuro";
+        }
+      }
+
+      const storedTheme = localStorage.getItem("fiatlux-theme");
+      if (storedTheme === "dark" || storedTheme === "light") {
+        applyTheme(storedTheme);
+      } else {
+        applyTheme("light");
+      }
+
+      toggleBtn.addEventListener("click", function () {
+        const isDark = body.classList.contains("dark-mode");
+        const newTheme = isDark ? "light" : "dark";
+        applyTheme(newTheme);
+        localStorage.setItem("fiatlux-theme", newTheme);
+      });
+    })();
+  </script>
+</body>
+</html>
